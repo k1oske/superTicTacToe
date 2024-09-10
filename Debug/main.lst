@@ -1,8 +1,8 @@
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    1
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    1
 
 ************ OBJECT LISTING ************
 
-FILE NAME: C:\Users\henry\Documents\GitHub\superTicTacToe\main.c
+FILE NAME: C:\Users\Nutzer\OneDrive\Dokumente\GitHub\superTicTacToe\main.c
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
@@ -31,8 +31,8 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
           main.c    23    //
           main.c    24    //****************************************************************************
           main.c    25    
-          main.c    26    void setShape(int shape[6][6]){
-P   00000000              _setShape:                       ; function: setShape
+          main.c    26    void drawShape(int shape[6][6]){
+P   00000000              _drawShape:                      ; function: drawShape
                                                            ; frame size=0
           main.c    27        int x;
           main.c    28        int y;
@@ -64,7 +64,7 @@ P   00000000              _setShape:                       ; function: setShape
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    2
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    2
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -130,7 +130,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    3
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    3
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -196,7 +196,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    4
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    4
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -262,7 +262,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    5
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    5
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -328,7 +328,7 @@ P_T 00000000              _InitializeSystem:               ; function: Initializ
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    6
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    6
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -394,7 +394,7 @@ C   00000000              L321:
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    7
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    7
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -460,7 +460,7 @@ B_B 00000000              _BR_Size:                        ; static: BR_Size
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:48:35  PAGE    1
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:52:43  PAGE    1
 
 
 ******** STATISTICS INFORMATION ********
@@ -529,5 +529,5 @@ NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            20
 *** COMMAND PARAMETER ***
 
 
-  -subcommand=C:\Users\henry\AppData\Local\Temp\hmk810.tmp 
+  -subcommand=C:\Users\Nutzer\AppData\Local\Temp\hmkFB72.tmp 
 

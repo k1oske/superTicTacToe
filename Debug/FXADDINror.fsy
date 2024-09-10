@@ -2,8 +2,8 @@
 ;fsymbol = P
 
 ;SECTION NAME = P
- .export _setShape
-_setShape: .equ h'0030020c
+ .export _drawShape
+_drawShape: .equ h'0030020c
  .export _minicross
 _minicross: .equ h'00300210
  .export _initDisp
