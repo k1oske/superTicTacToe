@@ -3,10 +3,10 @@
 #
 ############################
 # Directory defines
-TCDIR = C:\Users\henry\Desktop\Casio SDK\OS\SH
-OSDIR = C:\Users\henry\Desktop\Casio SDK\OS
-APPDIR = C:\Users\henry\Documents\GitHub\superTicTacToe
-OUTDIR = C:\Users\henry\Documents\GitHub\superTicTacToe\Debug
+TCDIR = D:\Program Files\OS\SH
+OSDIR = D:\Program Files\OS
+APPDIR = C:\Users\Nutzer\OneDrive\Dokumente\GitHub\superTicTacToe
+OUTDIR = C:\Users\Nutzer\OneDrive\Dokumente\GitHub\superTicTacToe\Debug
 
 ################
 # Main Defines

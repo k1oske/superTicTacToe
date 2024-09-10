@@ -1,8 +1,8 @@
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    1
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    1
 
 ************ OBJECT LISTING ************
 
-FILE NAME: C:\Users\henry\Documents\GitHub\superTicTacToe\main.c
+FILE NAME: C:\Users\Nutzer\OneDrive\Dokumente\GitHub\superTicTacToe\main.c
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
@@ -51,7 +51,7 @@ P   00000000              _setShape:                       ; function: setShape
     0000000E 6D53                   MOV         R5,R13
     00000010 2FB6                   MOV.L       R11,@-R15
     00000012 7E06                   ADD         #6,R14
-    00000014 DC3E                   MOV.L       L335+6,R12 ; _Bdisp_DrawLineVRAM
+    00000014 DC42                   MOV.L       L338+10,R12; _Bdisp_DrawLineVRAM
     00000016 7311                   ADD         #17,R3
     00000018 2FA6                   MOV.L       R10,@-R15
           main.c    32        int i;
@@ -64,7 +64,7 @@ P   00000000              _setShape:                       ; function: setShape
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    2
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    2
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -78,7 +78,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     0000002E 6293                   MOV         R9,R2
     00000030 7211                   ADD         #17,R2
     00000032 2F22                   MOV.L       R2,@R15
-    00000034              L329:                             
+    00000034              L332:                             
           main.c    34        Bdisp_DrawLineVRAM(i+xOffset, 1+yOffset, i+xOffset, 17+yOffset); //vertikal
     00000034 57F1                   MOV.L       @(4,R15),R7
     00000036 66E3                   MOV         R14,R6
@@ -96,7 +96,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     0000004C 7B06                   ADD         #6,R11
     0000004E 7D06                   ADD         #6,R13
     00000050 3B83                   CMP/GE      R8,R11
-    00000052 8FEF                   BF/S        L329
+    00000052 8FEF                   BF/S        L332
     00000054 7E06                   ADD         #6,R14
           main.c    36        }
           main.c    37    }
@@ -124,13 +124,13 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     0000006E EE15                   MOV         #21,R14
     00000070 2FC6                   MOV.L       R12,@-R15
     00000072 EC3C                   MOV         #60,R12
-    00000074 DD26                   MOV.L       L335+6,R13 ; _Bdisp_DrawLineVRAM
+    00000074 DD2A                   MOV.L       L338+10,R13; _Bdisp_DrawLineVRAM
     00000076 2FB6                   MOV.L       R11,@-R15
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    3
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    3
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -139,7 +139,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     0000007A 2F96                   MOV.L       R9,@-R15
     0000007C 2F86                   MOV.L       R8,@-R15
     0000007E 4F22                   STS.L       PR,@-R15
-    00000080              L330:                             
+    00000080              L333:                             
           main.c    45            Bdisp_DrawLineVRAM(i, 2, i, 60); //vertikal
     00000080 E73C                   MOV         #60,R7
     00000082 66E3                   MOV         R14,R6
@@ -154,7 +154,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     00000092 E402                   MOV         #2,R4
     00000094 7E14                   ADD         #20,R14
     00000096 3EC3                   CMP/GE      R12,R14
-    00000098 8BF2                   BF          L330
+    00000098 8BF2                   BF          L333
           main.c    47        }
           main.c    48        
           main.c    49        for (y=0; y<3; y++){
@@ -162,7 +162,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     0000009C EA00                   MOV         #0,R10
     0000009E ED03                   MOV         #3,R13
     000000A0 6BA3                   MOV         R10,R11
-    000000A2              L331:                             
+    000000A2              L334:                             
           main.c    50            for (x=0; x<3; x++){
     000000A2 6CA3                   MOV         R10,R12
     000000A4 6E83                   MOV         R8,R14
@@ -172,18 +172,18 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
     000000AC 393C                   ADD         R3,R9
     000000AE 4908                   SHLL2       R9
     000000B0 7902                   ADD         #2,R9
-    000000B2              L332:                             
+    000000B2              L335:                             
           main.c    51                minicross(x*20+2, y*20+2);
     000000B2 6593                   MOV         R9,R5
     000000B4 BFA6                   BSR         _minicross
     000000B6 64E3                   MOV         R14,R4
     000000B8 7C01                   ADD         #1,R12
     000000BA 3CD3                   CMP/GE      R13,R12
-    000000BC 8FF9                   BF/S        L332
+    000000BC 8FF9                   BF/S        L335
     000000BE 7E14                   ADD         #20,R14
     000000C0 7B01                   ADD         #1,R11
     000000C2 3BD3                   CMP/GE      R13,R11
-    000000C4 8BED                   BF          L331
+    000000C4 8BED                   BF          L334
           main.c    52            }
           main.c    53        }
           main.c    54    }
@@ -196,7 +196,7 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    4
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    4
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
@@ -208,11 +208,11 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
           main.c    55    
           main.c    56    int AddIn_main(int isAppli, unsigned short OptionNum)
     000000D8              _AddIn_main:                     ; function: AddIn_main
-                                                           ; frame size=152
+                                                           ; frame size=296
                                                            ; used runtime library name:
                                                            ; __quick_mvn
     000000D8 4F22                   STS.L       PR,@-R15
-    000000DA 9016                   MOV.W       L335,R0    ; H'FF6C
+    000000DA 901C                   MOV.W       L338,R0    ; H'FEDC
           main.c    57    {
           main.c    58        int cross[6][6] = {
           main.c    59            {1, 0, 0, 0, 0, 1},
@@ -222,117 +222,135 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
           main.c    63            {0, 1, 0, 0, 1, 0},
           main.c    64            {1, 0, 0, 0, 0, 1}
           main.c    65        };
-    000000DC D20D                   MOV.L       L335+10,R2 ; L321
+    000000DC 911C                   MOV.W       L338+2,R1  ; H'0094
     000000DE 3F0C                   ADD         R0,R15
-    000000E0 D30D                   MOV.L       L335+14,R3 ; __quick_mvn
-    000000E2 61F3                   MOV         R15,R1
-    000000E4 9012                   MOV.W       L335+2,R0  ; H'0090
+    000000E0 D210                   MOV.L       L338+14,R2 ; L321
+    000000E2 901A                   MOV.W       L338+4,R0  ; H'0090
+    000000E4 D310                   MOV.L       L338+18,R3 ; __quick_mvn
     000000E6 430B                   JSR         @R3
-    000000E8 7104                   ADD         #4,R1
+    000000E8 31FC                   ADD         R15,R1
           main.c    66        
-          main.c    67        unsigned int key;
-          main.c    68    
-          main.c    69        Bdisp_AllClr_DDVRAM();
-    000000EA D10C                   MOV.L       L335+18,R1 ; _Bdisp_AllClr_DDVRAM
-    000000EC 410B                   JSR         @R1
-    000000EE 0009                   NOP
-          main.c    70        initDisp();
-    000000F0 BFBB                   BSR         _initDisp
-    000000F2 0009                   NOP
-          main.c    71        
-          main.c    72        Bdisp_PutDisp_DD();
-    000000F4 D10A                   MOV.L       L335+22,R1 ; _Bdisp_PutDisp_DD
-    000000F6 410B                   JSR         @R1
-    000000F8 0009                   NOP
-          main.c    73        GetKey(&key);
-    000000FA D30A                   MOV.L       L335+26,R3 ; _GetKey
-    000000FC 430B                   JSR         @R3
-    000000FE 64F3                   MOV         R15,R4
-          main.c    74        
-          main.c    75        return 1;
-          main.c    76    }
-    00000100 9105                   MOV.W       L335+4,R1  ; H'0094
-    00000102 3F1C                   ADD         R1,R15
-    00000104 4F26                   LDS.L       @R15+,PR
-    00000106 000B                   RTS
-    00000108 E001                   MOV         #1,R0
-    0000010A              L335:                             
-    0000010A FF6C                   .DATA.W     H'FF6C
+          main.c    67        int circle[6][6] = {
+          main.c    68            {0, 0, 1, 1, 0, 0},
+          main.c    69            {0, 1, 0, 0, 1, 0},
+          main.c    70            {1, 0, 0, 0, 0, 1},
+          main.c    71            {1, 0, 0, 0, 0, 1},
+          main.c    72            {0, 1, 0, 0, 1, 0},
+          main.c    73            {0, 0, 1, 1, 0, 0}
+          main.c    74        };
+    000000EA 61F3                   MOV         R15,R1
+    000000EC D20F                   MOV.L       L338+22,R2 ; L323
+    000000EE 9014                   MOV.W       L338+4,R0  ; H'0090
+    000000F0 D30D                   MOV.L       L338+18,R3 ; __quick_mvn
+    000000F2 430B                   JSR         @R3
+    000000F4 7104                   ADD         #4,R1
+          main.c    75        
+          main.c    76        unsigned int key;
+          main.c    77    
+          main.c    78        Bdisp_AllClr_DDVRAM();
+    000000F6 D10E                   MOV.L       L338+26,R1 ; _Bdisp_AllClr_DDVRAM
+    000000F8 410B                   JSR         @R1
+    000000FA 0009                   NOP
+          main.c    79        initDisp();
+    000000FC BFB5                   BSR         _initDisp
+    000000FE 0009                   NOP
+          main.c    80        
+          main.c    81        Bdisp_PutDisp_DD();
+    00000100 D10C                   MOV.L       L338+30,R1 ; _Bdisp_PutDisp_DD
+    00000102 410B                   JSR         @R1
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    5
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    5
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-    0000010C 0090                   .DATA.W     H'0090
-    0000010E 0094                   .DATA.W     H'0094
-    00000110 <00000000>             .DATA.L     _Bdisp_DrawLineVRAM
-    00000114 <00000000>             .DATA.L     L321
-    00000118 <00000000>             .DATA.L     __quick_mvn
-    0000011C <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
-    00000120 <00000000>             .DATA.L     _Bdisp_PutDisp_DD
-    00000124 <00000000>             .DATA.L     _GetKey
-          main.c    77    
-          main.c    78    
-          main.c    79    
-          main.c    80    
-          main.c    81    //****************************************************************************
-          main.c    82    //**************                                              ****************
-          main.c    83    //**************                 Notice!                      ****************
-          main.c    84    //**************                                              ****************
-          main.c    85    //**************  Please do not change the following source.  ****************
-          main.c    86    //**************                                              ****************
-          main.c    87    //****************************************************************************
+    00000104 0009                   NOP
+          main.c    82        GetKey(&key);
+    00000106 D30C                   MOV.L       L338+34,R3 ; _GetKey
+    00000108 430B                   JSR         @R3
+    0000010A 64F3                   MOV         R15,R4
+          main.c    83        
+          main.c    84        return 1;
+          main.c    85    }
+    0000010C 9106                   MOV.W       L338+6,R1  ; H'0124
+    0000010E 3F1C                   ADD         R1,R15
+    00000110 4F26                   LDS.L       @R15+,PR
+    00000112 000B                   RTS
+    00000114 E001                   MOV         #1,R0
+    00000116              L338:                             
+    00000116 FEDC                   .DATA.W     H'FEDC
+    00000118 0094                   .DATA.W     H'0094
+    0000011A 0090                   .DATA.W     H'0090
+    0000011C 0124                   .DATA.W     H'0124
+    0000011E 0000                   .DATA.W     0
+    00000120 <00000000>             .DATA.L     _Bdisp_DrawLineVRAM
+    00000124 <00000000>             .DATA.L     L321
+    00000128 <00000000>             .DATA.L     __quick_mvn
+    0000012C <00000000>             .DATA.L     L323
+    00000130 <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
+    00000134 <00000000>             .DATA.L     _Bdisp_PutDisp_DD
+    00000138 <00000000>             .DATA.L     _GetKey
+          main.c    86    
+          main.c    87    
           main.c    88    
           main.c    89    
-          main.c    90    #pragma section _BR_Size
-          main.c    91    unsigned long BR_Size;
-          main.c    92    #pragma section
-          main.c    93    
-          main.c    94    
-          main.c    95    #pragma section _TOP
-          main.c    96    
-          main.c    97    //****************************************************************************
-          main.c    98    //  InitializeSystem
-          main.c    99    //
-          main.c   100    //  param   :   isAppli   : 1 = Application / 0 = eActivity
-          main.c   101    //              OptionNum : Option Number (only eActivity)
-          main.c   102    //
-          main.c   103    //  retval  :   1 = No error / 0 = Error
-          main.c   104    //
-          main.c   105    //****************************************************************************
-          main.c   106    int InitializeSystem(int isAppli, unsigned short OptionNum)
+          main.c    90    //****************************************************************************
+          main.c    91    //**************                                              ****************
+          main.c    92    //**************                 Notice!                      ****************
+          main.c    93    //**************                                              ****************
+          main.c    94    //**************  Please do not change the following source.  ****************
+          main.c    95    //**************                                              ****************
+          main.c    96    //****************************************************************************
+          main.c    97    
+          main.c    98    
+          main.c    99    #pragma section _BR_Size
+          main.c   100    unsigned long BR_Size;
+          main.c   101    #pragma section
+          main.c   102    
+          main.c   103    
+          main.c   104    #pragma section _TOP
+          main.c   105    
+          main.c   106    //****************************************************************************
+          main.c   107    //  InitializeSystem
+          main.c   108    //
+          main.c   109    //  param   :   isAppli   : 1 = Application / 0 = eActivity
+          main.c   110    //              OptionNum : Option Number (only eActivity)
+          main.c   111    //
+          main.c   112    //  retval  :   1 = No error / 0 = Error
+          main.c   113    //
+          main.c   114    //****************************************************************************
+          main.c   115    int InitializeSystem(int isAppli, unsigned short OptionNum)
 P_T 00000000              _InitializeSystem:               ; function: InitializeSystem
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    6
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
                                                            ; frame size=0
-          main.c   107    {
-          main.c   108        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
-    00000000 D301                   MOV.L       L336+2,R3  ; _INIT_ADDIN_APPLICATION
+          main.c   116    {
+          main.c   117        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
+    00000000 D301                   MOV.L       L339+2,R3  ; _INIT_ADDIN_APPLICATION
     00000002 432B                   JMP         @R3
     00000004 0009                   NOP
-    00000006              L336:                             
+    00000006              L339:                             
     00000006 0000                   .DATA.W     0
     00000008 <00000000>             .DATA.L     _INIT_ADDIN_APPLICATION
-          main.c   109    }
-          main.c   110    
-          main.c   111    #pragma section
-          main.c   112    
+          main.c   118    }
+          main.c   119    
+          main.c   120    #pragma section
+          main.c   121    
 C   00000000              L321:
     00000000 0000000100             .DATA.L     H'00000001,H'00000000,H'00000000,H'00000000,H'00000000,H'00000001,H'00000000,
              0000000000 +                       H'00000001,H'00000000,H'00000000,H'00000001,H'00000000,H'00000000,H'00000000,
              0000000000 +                       H'00000001,H'00000001,H'00000000,H'00000000,H'00000000,H'00000000,H'00000001,
              0000000000 +                       H'00000001,H'00000000,H'00000000,H'00000000,H'00000001,H'00000000,H'00000000,
-
-
-
-
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    6
-
-
-SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
-
              0000000100 +                       H'00000001,H'00000000,H'00000001,H'00000000,H'00000000,H'00000000,H'00000000,
              0000000000 +                       H'00000001
              0001000000   
@@ -358,6 +376,45 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
              0000000000   
              0000000000   
              00000001     
+    00000090              L323:
+    00000090 0000000000             .DATA.L     H'00000000,H'00000000,H'00000001,H'00000001,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000001,H'00000000,H'00000000,H'00000001,H'00000000,H'00000001,H'00000000,
+             0001000000 +                       H'00000000,H'00000000,H'00000000,H'00000001,H'00000001,H'00000000,H'00000000,
+             0100000000 +                       H'00000000,H'00000000,H'00000001,H'00000000,H'00000001,H'00000000,H'00000000,
+             0000000000 +                       H'00000001,H'00000000,H'00000000,H'00000000,H'00000001,H'00000001,H'00000000,
+             0000000000 +                       H'00000000
+             0001000000   
+             0000000000   
+             0000000100   
+             0000000000   
+             0001000000   
+             0000000000   
+             0000000000   
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    7
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+             0000000000   
+             0001000000   
+             0100000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0100000000   
+             0000000100   
+             0000000000   
+             0000000000   
+             0100000000   
+             0000000000   
+             0000000000   
+             0001000000   
+             0100000000   
+             00000000     
 B_B 00000000              _BR_Size:                        ; static: BR_Size
     00000000 00000004               .RES.L      1
 
@@ -394,7 +451,16 @@ B_B 00000000              _BR_Size:                        ; static: BR_Size
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:17:40  PAGE    1
+
+
+
+
+
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 10-Sep-2024 19:46:56  PAGE    1
 
 
 ******** STATISTICS INFORMATION ********
@@ -410,16 +476,16 @@ NUMBER OF WARNINGS:         0
 
 ******* SOURCE LINE INFORMATION ********
 
-COMPILED SOURCE LINE:      112
+COMPILED SOURCE LINE:      121
 
 
 
 ******* SECTION SIZE INFORMATION *******
 
-PROGRAM  SECTION (P):                               00000128 Byte(s)
+PROGRAM  SECTION (P):                               0000013C Byte(s)
 PROGRAM  SECTION (P_BR_Size):                       00000000 Byte(s)
 PROGRAM  SECTION (P_TOP):                           0000000C Byte(s)
-CONSTANT SECTION (C):                               00000090 Byte(s)
+CONSTANT SECTION (C):                               00000120 Byte(s)
 CONSTANT SECTION (C_BR_Size):                       00000000 Byte(s)
 CONSTANT SECTION (C_TOP):                           00000000 Byte(s)
 DATA     SECTION (D):                               00000000 Byte(s)
@@ -429,7 +495,7 @@ BSS      SECTION (B):                               00000000 Byte(s)
 BSS      SECTION (B_BR_Size):                       00000004 Byte(s)
 BSS      SECTION (B_TOP):                           00000000 Byte(s)
 
- TOTAL PROGRAM SIZE: 000001C8 Byte(s)
+ TOTAL PROGRAM SIZE: 0000026C Byte(s)
 
 
 
@@ -437,7 +503,7 @@ BSS      SECTION (B_TOP):                           00000000 Byte(s)
 
 NUMBER OF EXTERNAL REFERENCE SYMBOLS:            6
 NUMBER OF EXTERNAL DEFINITION SYMBOLS:           6
-NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            19
+NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            20
 
 
 
@@ -463,5 +529,5 @@ NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            19
 *** COMMAND PARAMETER ***
 
 
-  -subcommand=C:\Users\henry\AppData\Local\Temp\hmkBBDD.tmp 
+  -subcommand=C:\Users\Nutzer\AppData\Local\Temp\hmkB1CE.tmp 
 

@@ -64,6 +64,15 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
         {1, 0, 0, 0, 0, 1}
     };
     
+    int circle[6][6] = {
+        {0, 0, 1, 1, 0, 0},
+        {0, 1, 0, 0, 1, 0},
+        {1, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 1},
+        {0, 1, 0, 0, 1, 0},
+        {0, 0, 1, 1, 0, 0}
+    };
+    
     unsigned int key;
 
     Bdisp_AllClr_DDVRAM();

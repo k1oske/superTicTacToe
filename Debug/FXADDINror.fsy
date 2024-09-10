@@ -11,37 +11,37 @@ _initDisp: .equ h'00300276
  .export _AddIn_main
 _AddIn_main: .equ h'003002e4
  .export ___LINK_PROTECT
-___LINK_PROTECT: .equ h'00300334
+___LINK_PROTECT: .equ h'00300348
  .export _SetQuitHandler
-_SetQuitHandler: .equ h'00300338
+_SetQuitHandler: .equ h'0030034c
  .export _OnAppCloseDefault
-_OnAppCloseDefault: .equ h'0030033e
+_OnAppCloseDefault: .equ h'00300352
  .export __INITSCT_ADDIN
-__INITSCT_ADDIN: .equ h'00300392
+__INITSCT_ADDIN: .equ h'003003a6
  .export _INIT_ADDIN_APPLICATION
-_INIT_ADDIN_APPLICATION: .equ h'003003da
+_INIT_ADDIN_APPLICATION: .equ h'003003ee
  .export __quick_mvn
-__quick_mvn: .equ h'00300450
+__quick_mvn: .equ h'00300464
  .export _Bdel_cychdr
-_Bdel_cychdr: .equ h'00300510
+_Bdel_cychdr: .equ h'00300524
  .export _Bdisp_AllClr_DDVRAM
-_Bdisp_AllClr_DDVRAM: .equ h'00300520
+_Bdisp_AllClr_DDVRAM: .equ h'00300534
  .export _Bdisp_PutDisp_DD
-_Bdisp_PutDisp_DD: .equ h'00300530
+_Bdisp_PutDisp_DD: .equ h'00300544
  .export _Bdisp_DrawLineVRAM
-_Bdisp_DrawLineVRAM: .equ h'00300540
+_Bdisp_DrawLineVRAM: .equ h'00300554
  .export _BfileFLS_CloseFile
-_BfileFLS_CloseFile: .equ h'00300550
+_BfileFLS_CloseFile: .equ h'00300564
  .export _Bkey_Set_RepeatTime_Default
-_Bkey_Set_RepeatTime_Default: .equ h'00300560
+_Bkey_Set_RepeatTime_Default: .equ h'00300574
  .export _CallbackAtQuitMainFunction
-_CallbackAtQuitMainFunction: .equ h'00300570
+_CallbackAtQuitMainFunction: .equ h'00300584
  .export _flsFindClose
-_flsFindClose: .equ h'00300580
+_flsFindClose: .equ h'00300594
  .export _GetKey
-_GetKey: .equ h'00300590
+_GetKey: .equ h'003005a4
  .export _GLibAddinAplExecutionCheck
-_GLibAddinAplExecutionCheck: .equ h'003005a0
+_GLibAddinAplExecutionCheck: .equ h'003005b4
  .export _Hmem_SetMMU
-_Hmem_SetMMU: .equ h'003005b0
+_Hmem_SetMMU: .equ h'003005c4
  .end
