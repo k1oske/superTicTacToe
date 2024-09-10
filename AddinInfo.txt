@@ -1,0 +1,12 @@
+//------------------------------------------------------------------
+// Addin-Application header control file, created with the CASIO SDK
+//------------------------------------------------------------------
+[OUTPUT]     : "STTT.G1A"
+[BINDATA]    : "FXADDINror.bin"
+[DISPNAME]   : "sTTT"
+[APPNAME]    : "@STTT"
+[VERSION]    : "01.00.0000"
+[APL_ICON]   : "MainIcon.bmp"
+[MODULE_NUM] : 0
+[MOD1_TITLE] : "sTTT"
+[MOD1_ICON]  : "eActivityIcon.bmp"

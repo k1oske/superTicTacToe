@@ -1,0 +1,47 @@
+;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2024.09.10
+;fsymbol = P
+
+;SECTION NAME = P
+ .export _setShape
+_setShape: .equ h'0030020c
+ .export _minicross
+_minicross: .equ h'00300210
+ .export _initDisp
+_initDisp: .equ h'00300276
+ .export _AddIn_main
+_AddIn_main: .equ h'003002e4
+ .export ___LINK_PROTECT
+___LINK_PROTECT: .equ h'00300334
+ .export _SetQuitHandler
+_SetQuitHandler: .equ h'00300338
+ .export _OnAppCloseDefault
+_OnAppCloseDefault: .equ h'0030033e
+ .export __INITSCT_ADDIN
+__INITSCT_ADDIN: .equ h'00300392
+ .export _INIT_ADDIN_APPLICATION
+_INIT_ADDIN_APPLICATION: .equ h'003003da
+ .export __quick_mvn
+__quick_mvn: .equ h'00300450
+ .export _Bdel_cychdr
+_Bdel_cychdr: .equ h'00300510
+ .export _Bdisp_AllClr_DDVRAM
+_Bdisp_AllClr_DDVRAM: .equ h'00300520
+ .export _Bdisp_PutDisp_DD
+_Bdisp_PutDisp_DD: .equ h'00300530
+ .export _Bdisp_DrawLineVRAM
+_Bdisp_DrawLineVRAM: .equ h'00300540
+ .export _BfileFLS_CloseFile
+_BfileFLS_CloseFile: .equ h'00300550
+ .export _Bkey_Set_RepeatTime_Default
+_Bkey_Set_RepeatTime_Default: .equ h'00300560
+ .export _CallbackAtQuitMainFunction
+_CallbackAtQuitMainFunction: .equ h'00300570
+ .export _flsFindClose
+_flsFindClose: .equ h'00300580
+ .export _GetKey
+_GetKey: .equ h'00300590
+ .export _GLibAddinAplExecutionCheck
+_GLibAddinAplExecutionCheck: .equ h'003005a0
+ .export _Hmem_SetMMU
+_Hmem_SetMMU: .equ h'003005b0
+ .end
