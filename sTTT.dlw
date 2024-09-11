@@ -3,22 +3,21 @@
 [_1]
 Type=5
 Order=1
-Top=7830
-Left=2130
-Height=3135
-Width=6885
+Top=8070
+Left=2235
+Height=2625
+Width=7005
 State=0
 Flags=00000020
-Setting=98:4:main.c
 OptionA=0
 
 [_2]
 Type=1
-Order=5
+Order=4
 Top=-15
-Left=17115
-Height=4905
-Width=5610
+Left=20175
+Height=6855
+Width=8280
 State=0
 Flags=00000005
 OptionA=15
@@ -26,9 +25,9 @@ OptionB=15
 
 [_3]
 Type=6
-Order=3
-Top=4065
-Left=17040
+Order=2
+Top=6870
+Left=22710
 Height=6990
 Width=5655
 State=0
@@ -81,7 +80,7 @@ OptionA=0
 
 [_8]
 Type=17
-Order=4
+Order=5
 Top=15
 Left=-15
 Height=11115
@@ -92,11 +91,11 @@ OptionA=0
 
 [_9]
 Type=15
-Order=0
+Order=3
 Top=30
 Left=2250
-Height=8055
-Width=7575
+Height=7920
+Width=8925
 State=0
 Flags=00000000
 OptionA=0
@@ -115,12 +114,12 @@ OptionA=4
 
 [_33]
 Type=16
-Order=2
+Order=0
 Top=30
-Left=9720
-Height=10980
-Width=7395
+Left=11190
+Height=14160
+Width=8985
 State=0
 Flags=00000038
-Setting=25:1:main.c
+Setting=90:5:main.c
 OptionA=4

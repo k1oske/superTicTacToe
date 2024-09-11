@@ -5,45 +5,45 @@
  .export _drawShape
 _drawShape: .equ h'0030020c
  .export _minicross
-_minicross: .equ h'0030024c
+_minicross: .equ h'0030026e
  .export _initDisp
-_initDisp: .equ h'003002b2
+_initDisp: .equ h'003002d4
  .export _AddIn_main
-_AddIn_main: .equ h'0030032c
+_AddIn_main: .equ h'0030034c
  .export ___LINK_PROTECT
-___LINK_PROTECT: .equ h'003003a0
+___LINK_PROTECT: .equ h'003003c0
  .export _SetQuitHandler
-_SetQuitHandler: .equ h'003003a4
+_SetQuitHandler: .equ h'003003c4
  .export _OnAppCloseDefault
-_OnAppCloseDefault: .equ h'003003aa
+_OnAppCloseDefault: .equ h'003003ca
  .export __INITSCT_ADDIN
-__INITSCT_ADDIN: .equ h'003003fe
+__INITSCT_ADDIN: .equ h'0030041e
  .export _INIT_ADDIN_APPLICATION
-_INIT_ADDIN_APPLICATION: .equ h'00300446
+_INIT_ADDIN_APPLICATION: .equ h'00300466
  .export __quick_mvn
-__quick_mvn: .equ h'003004bc
+__quick_mvn: .equ h'003004dc
  .export _Bdel_cychdr
-_Bdel_cychdr: .equ h'0030057c
+_Bdel_cychdr: .equ h'0030059c
  .export _Bdisp_AllClr_DDVRAM
-_Bdisp_AllClr_DDVRAM: .equ h'0030058c
+_Bdisp_AllClr_DDVRAM: .equ h'003005ac
  .export _Bdisp_PutDisp_DD
-_Bdisp_PutDisp_DD: .equ h'0030059c
+_Bdisp_PutDisp_DD: .equ h'003005bc
  .export _Bdisp_DrawLineVRAM
-_Bdisp_DrawLineVRAM: .equ h'003005ac
- .export _Bdisp_SetPoint_DD
-_Bdisp_SetPoint_DD: .equ h'003005bc
+_Bdisp_DrawLineVRAM: .equ h'003005cc
+ .export _Bdisp_SetPoint_VRAM
+_Bdisp_SetPoint_VRAM: .equ h'003005dc
  .export _BfileFLS_CloseFile
-_BfileFLS_CloseFile: .equ h'003005cc
+_BfileFLS_CloseFile: .equ h'003005ec
  .export _Bkey_Set_RepeatTime_Default
-_Bkey_Set_RepeatTime_Default: .equ h'003005dc
+_Bkey_Set_RepeatTime_Default: .equ h'003005fc
  .export _CallbackAtQuitMainFunction
-_CallbackAtQuitMainFunction: .equ h'003005ec
+_CallbackAtQuitMainFunction: .equ h'0030060c
  .export _flsFindClose
-_flsFindClose: .equ h'003005fc
+_flsFindClose: .equ h'0030061c
  .export _GetKey
-_GetKey: .equ h'0030060c
+_GetKey: .equ h'0030062c
  .export _GLibAddinAplExecutionCheck
-_GLibAddinAplExecutionCheck: .equ h'0030061c
+_GLibAddinAplExecutionCheck: .equ h'0030063c
  .export _Hmem_SetMMU
-_Hmem_SetMMU: .equ h'0030062c
+_Hmem_SetMMU: .equ h'0030064c
  .end
