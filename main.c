@@ -23,12 +23,12 @@
 //
 //****************************************************************************
 
-void drawShape(int xOffset, int yOffset, int shape[6][6]){
+void drawShape(int xOffset, int yOffset, int shape[3][3]){
     int x;
     int y;
     
-    for (y=0; y<6; y++){
-        for (x=0; x<6; x++){  
+    for (y=0; y<3; y++){
+        for (x=0; x<3; x++){  
             Bdisp_SetPoint_VRAM(x+xOffset, y+yOffset, shape[y][x]);
         }
     }
@@ -62,22 +62,20 @@ void initDisp(){
 int AddIn_main(int isAppli, unsigned short OptionNum)
 {
     
-    int cross[6][6] = {    
-        {1, 0, 0, 0, 0, 1},
-        {0, 1, 0, 0, 1, 0},
-        {0, 0, 1, 1, 0, 0},
-        {0, 0, 1, 1, 0, 0},
-        {0, 1, 0, 0, 1, 0},
-        {1, 0, 0, 0, 0, 1}
+    int circle[3][3] = {    
+        {1, 1, 1},
+        {1, 0, 1},
+        {1, 1, 1},
+        
+        
     };
     
-    int circle[6][6] = { 
-        {0, 0, 1, 1, 0, 0},
-        {0, 1, 0, 0, 1, 0},
-        {1, 0, 0, 0, 0, 1},
-        {1, 0, 0, 0, 0, 1},
-        {0, 1, 0, 0, 1, 0},
-        {0, 0, 1, 1, 0, 0}
+    int cross[3][3] = { 
+        {1, 0, 1},
+        {0, 1, 0},
+        {1, 0, 1},
+        
+       
     };  
         
     unsigned int key;
@@ -88,8 +86,9 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
     Bdisp_PutDisp_DD();
     GetKey(&key);
     
-    drawShape(5, 5, cross); //test
-   
+    drawShape(4, 4, cross); //test
+    drawShape(10, 4, circle); 
+    
     Bdisp_PutDisp_DD();
     GetKey(&key);
     
