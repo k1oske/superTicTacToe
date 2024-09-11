@@ -23,9 +23,15 @@
 //
 //****************************************************************************
 
-void drawShape(int shape[6][6]){
+void drawShape(int xOffset, int yOffset, int shape[6][6]){
     int x;
     int y;
+    
+    for (y=0; y<6; y++){
+        for (x=0; x<6; x++){  
+            Bdisp_SetPoint_VRAM(x+xOffset, y+yOffset, shape[y][x]);
+        }
+    }
 }
 
 void minicross(xOffset, yOffset){
@@ -55,7 +61,8 @@ void initDisp(){
 
 int AddIn_main(int isAppli, unsigned short OptionNum)
 {
-    int cross[6][6] = {         //
+    
+    int cross[6][6] = {    
         {1, 0, 0, 0, 0, 1},
         {0, 1, 0, 0, 1, 0},
         {0, 0, 1, 1, 0, 0},
@@ -71,13 +78,18 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
         {1, 0, 0, 0, 0, 1},
         {0, 1, 0, 0, 1, 0},
         {0, 0, 1, 1, 0, 0}
-    };
-    
+    };  
+        
     unsigned int key;
 
     Bdisp_AllClr_DDVRAM();
     initDisp();
     
+    Bdisp_PutDisp_DD();
+    GetKey(&key);
+    
+    drawShape(5, 5, cross); //test
+   
     Bdisp_PutDisp_DD();
     GetKey(&key);
     
