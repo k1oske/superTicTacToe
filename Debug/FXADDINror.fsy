@@ -1,0 +1,51 @@
+;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2024.09.11
+;fsymbol = P
+
+;SECTION NAME = P
+ .export _AddIn_main
+_AddIn_main: .equ h'0030020c
+ .export _minicross
+_minicross: .equ h'00300266
+ .export _drawShape
+_drawShape: .equ h'003002cc
+ .export _initDisp
+_initDisp: .equ h'0030032c
+ .export ___LINK_PROTECT
+___LINK_PROTECT: .equ h'003003bc
+ .export _SetQuitHandler
+_SetQuitHandler: .equ h'003003c0
+ .export _OnAppCloseDefault
+_OnAppCloseDefault: .equ h'003003c6
+ .export __INITSCT_ADDIN
+__INITSCT_ADDIN: .equ h'0030041a
+ .export _INIT_ADDIN_APPLICATION
+_INIT_ADDIN_APPLICATION: .equ h'00300462
+ .export __quick_odd_mvn
+__quick_odd_mvn: .equ h'003004e4
+ .export __quick_evn_mvn
+__quick_evn_mvn: .equ h'003004d8
+ .export _Bdel_cychdr
+_Bdel_cychdr: .equ h'0030057c
+ .export _Bdisp_AllClr_DDVRAM
+_Bdisp_AllClr_DDVRAM: .equ h'0030058c
+ .export _Bdisp_PutDisp_DD
+_Bdisp_PutDisp_DD: .equ h'0030059c
+ .export _Bdisp_DrawLineVRAM
+_Bdisp_DrawLineVRAM: .equ h'003005ac
+ .export _Bdisp_SetPoint_VRAM
+_Bdisp_SetPoint_VRAM: .equ h'003005bc
+ .export _BfileFLS_CloseFile
+_BfileFLS_CloseFile: .equ h'003005cc
+ .export _Bkey_Set_RepeatTime_Default
+_Bkey_Set_RepeatTime_Default: .equ h'003005dc
+ .export _CallbackAtQuitMainFunction
+_CallbackAtQuitMainFunction: .equ h'003005ec
+ .export _flsFindClose
+_flsFindClose: .equ h'003005fc
+ .export _GetKey
+_GetKey: .equ h'0030060c
+ .export _GLibAddinAplExecutionCheck
+_GLibAddinAplExecutionCheck: .equ h'0030061c
+ .export _Hmem_SetMMU
+_Hmem_SetMMU: .equ h'0030062c
+ .end
