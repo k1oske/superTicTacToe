@@ -2,13 +2,14 @@
 
 [_1]
 Type=5
-Order=2
-Top=8070
-Left=2235
-Height=2625
-Width=7005
+Order=1
+Top=7830
+Left=2130
+Height=3135
+Width=6885
 State=0
 Flags=00000020
+Setting=98:4:main.c
 OptionA=0
 
 [_2]
@@ -94,8 +95,8 @@ Type=15
 Order=0
 Top=30
 Left=2250
-Height=7920
-Width=7170
+Height=8055
+Width=7575
 State=0
 Flags=00000000
 OptionA=0
@@ -114,12 +115,12 @@ OptionA=4
 
 [_33]
 Type=16
-Order=1
+Order=2
 Top=30
-Left=9330
+Left=9720
 Height=10980
-Width=7785
+Width=7395
 State=0
 Flags=00000038
-Setting=28:11:main.c
+Setting=25:1:main.c
 OptionA=4

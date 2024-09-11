@@ -1,47 +1,49 @@
-;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2024.09.10
+;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2024.09.11
 ;fsymbol = P
 
 ;SECTION NAME = P
  .export _drawShape
 _drawShape: .equ h'0030020c
  .export _minicross
-_minicross: .equ h'00300210
+_minicross: .equ h'0030024c
  .export _initDisp
-_initDisp: .equ h'00300276
+_initDisp: .equ h'003002b2
  .export _AddIn_main
-_AddIn_main: .equ h'003002e4
+_AddIn_main: .equ h'0030032c
  .export ___LINK_PROTECT
-___LINK_PROTECT: .equ h'00300348
+___LINK_PROTECT: .equ h'003003a0
  .export _SetQuitHandler
-_SetQuitHandler: .equ h'0030034c
+_SetQuitHandler: .equ h'003003a4
  .export _OnAppCloseDefault
-_OnAppCloseDefault: .equ h'00300352
+_OnAppCloseDefault: .equ h'003003aa
  .export __INITSCT_ADDIN
-__INITSCT_ADDIN: .equ h'003003a6
+__INITSCT_ADDIN: .equ h'003003fe
  .export _INIT_ADDIN_APPLICATION
-_INIT_ADDIN_APPLICATION: .equ h'003003ee
+_INIT_ADDIN_APPLICATION: .equ h'00300446
  .export __quick_mvn
-__quick_mvn: .equ h'00300464
+__quick_mvn: .equ h'003004bc
  .export _Bdel_cychdr
-_Bdel_cychdr: .equ h'00300524
+_Bdel_cychdr: .equ h'0030057c
  .export _Bdisp_AllClr_DDVRAM
-_Bdisp_AllClr_DDVRAM: .equ h'00300534
+_Bdisp_AllClr_DDVRAM: .equ h'0030058c
  .export _Bdisp_PutDisp_DD
-_Bdisp_PutDisp_DD: .equ h'00300544
+_Bdisp_PutDisp_DD: .equ h'0030059c
  .export _Bdisp_DrawLineVRAM
-_Bdisp_DrawLineVRAM: .equ h'00300554
+_Bdisp_DrawLineVRAM: .equ h'003005ac
+ .export _Bdisp_SetPoint_DD
+_Bdisp_SetPoint_DD: .equ h'003005bc
  .export _BfileFLS_CloseFile
-_BfileFLS_CloseFile: .equ h'00300564
+_BfileFLS_CloseFile: .equ h'003005cc
  .export _Bkey_Set_RepeatTime_Default
-_Bkey_Set_RepeatTime_Default: .equ h'00300574
+_Bkey_Set_RepeatTime_Default: .equ h'003005dc
  .export _CallbackAtQuitMainFunction
-_CallbackAtQuitMainFunction: .equ h'00300584
+_CallbackAtQuitMainFunction: .equ h'003005ec
  .export _flsFindClose
-_flsFindClose: .equ h'00300594
+_flsFindClose: .equ h'003005fc
  .export _GetKey
-_GetKey: .equ h'003005a4
+_GetKey: .equ h'0030060c
  .export _GLibAddinAplExecutionCheck
-_GLibAddinAplExecutionCheck: .equ h'003005b4
+_GLibAddinAplExecutionCheck: .equ h'0030061c
  .export _Hmem_SetMMU
-_Hmem_SetMMU: .equ h'003005c4
+_Hmem_SetMMU: .equ h'0030062c
  .end
