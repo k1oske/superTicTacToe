@@ -2,14 +2,14 @@
 ;fsymbol = P
 
 ;SECTION NAME = P
- .export _drawShape
-_drawShape: .equ h'0030020c
- .export _minicross
-_minicross: .equ h'0030026c
- .export _initDisp
-_initDisp: .equ h'003002d2
  .export _AddIn_main
-_AddIn_main: .equ h'00300340
+_AddIn_main: .equ h'0030020c
+ .export _minicross
+_minicross: .equ h'00300266
+ .export _drawShape
+_drawShape: .equ h'003002cc
+ .export _initDisp
+_initDisp: .equ h'0030032c
  .export ___LINK_PROTECT
 ___LINK_PROTECT: .equ h'003003bc
  .export _SetQuitHandler
