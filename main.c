@@ -25,13 +25,22 @@
 
 int AddIn_main(int isAppli, unsigned short OptionNum)
 {
-    void minicross(int xOffset, int yOffset);
+    int getInput();
+    void miniTTT(int xOffset, int yOffset);
     void drawShape(int xOffset, int yOffset, int shape[3][3]);
     void initDisp();
     
     unsigned int key;
+    int input;
+    int x,y;
     
-    int circle[3][3] = {    
+    int numpad[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    
+    int circle[3][3] = {  
         {1, 1, 1},
         {1, 0, 1},
         {1, 1, 1}
@@ -47,18 +56,27 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
     
     initDisp();
     Bdisp_PutDisp_DD();
-    
-    GetKey(&key);
-    
-    drawShape(4, 4, cross); //test
-    drawShape(10, 4, circle); //test
-    Bdisp_PutDisp_DD();
-    
+     
+//    x = ((numpad[input+3%3][input-1%3]-1%3)+1*6)+4;
+//    y = ((input-1%3)+1*6)+4;
+//    drawShape(x, y, cross);
+//    Bdisp_PutDisp_DD();
+
     GetKey(&key);
     return 1;
 }
 
-void minicross(int xOffset, int yOffset){
+int getInput(){
+    unsigned int key;
+    GetKey(&key);
+    
+    while (key < 49 || key > 57){
+        GetKey(&key);
+    }
+    return(key-48);
+}
+
+void miniTTT(int xOffset, int yOffset){
     int i;
     
     for (i=6; i<18; i+=6){
@@ -90,7 +108,7 @@ void initDisp(){
     
     for (y=0; y<3; y++){
         for (x=0; x<3; x++){
-            minicross(x*20+2, y*20+2); //kleine Linien
+            miniTTT(x*20+2, y*20+2); //kleine Linien
         }
     }
 }
