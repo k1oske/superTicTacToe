@@ -7,7 +7,7 @@ MemoryPath=INIT
 MemCardPath=SDCard
 
 [Program1]
-Program=STTT.G1A
+Program=sTTT.G1A
 Debug=Debug\FXADDINror.dbg
 LoadAddress=80000000:90100000
 
