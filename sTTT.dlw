@@ -2,8 +2,6 @@
 
 [_1]
 Type=5
-Order=0
-Top=7875
 Left=2250
 Height=3135
 Width=8805
@@ -27,8 +25,6 @@ OptionB=15
 [_3]
 Type=6
 Order=3
-Top=4065
-Left=17040
 Height=6990
 Width=5655
 State=0
@@ -81,7 +77,6 @@ OptionA=0
 
 [_8]
 Type=17
-Order=1
 Top=15
 Left=-15
 Height=11115
@@ -92,7 +87,6 @@ OptionA=0
 
 [_9]
 Type=15
-Order=4
 Top=30
 Left=2250
 Height=8055
@@ -115,12 +109,4 @@ OptionA=4
 
 [_33]
 Type=16
-Order=2
-Top=30
-Left=11055
-Height=10980
-Width=6060
-State=0
-Flags=00000038
-Setting=63:26:main.c
 OptionA=4
