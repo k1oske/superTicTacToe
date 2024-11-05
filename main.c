@@ -25,13 +25,26 @@
 
 int AddIn_main(int isAppli, unsigned short OptionNum)
 {
-    void minicross(int xOffset, int yOffset);
+    int getInput();
+    void setXY(int numpad[9], int numY[3], int XY[2]);
+    void miniTTT(int xOffset, int yOffset);
     void drawShape(int xOffset, int yOffset, int shape[3][3]);
     void initDisp();
     
     unsigned int key;
+    int c = 0;
     
-    int circle[3][3] = {    
+    int numpad[9] = {
+    7, 8, 9,
+    4, 5, 6,
+    1, 2, 3};
+    
+    int numY[3] = {0, 1, 2};
+    
+    int XY[2] = {0, 0};
+    int startXY[2] = {0, 0};
+
+    int circle[3][3] = {  
         {1, 1, 1},
         {1, 0, 1},
         {1, 1, 1}
@@ -42,23 +55,58 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
         {0, 1, 0},
         {1, 0, 1}
     };
+    
+    int* shape;
 
     Bdisp_AllClr_DDVRAM();
-    
     initDisp();
     Bdisp_PutDisp_DD();
     
-    GetKey(&key);
+    setXY(numpad, numY, XY);
     
-    drawShape(4, 4, cross); //test
-    drawShape(10, 4, circle); //test
-    Bdisp_PutDisp_DD();
+    while(1){
+        if (c%2){
+            shape = circle;
+        }
+        else{
+            shape = cross;
+        }
     
+        startXY[0] = XY[0];
+        startXY[1] = XY[1];
+        
+        setXY(numpad, numY, XY);
+    
+        drawShape(XY[0]*6+4+startXY[0]*20, XY[1]*6+4+startXY[1]*20, shape);   
+        Bdisp_PutDisp_DD();
+        
+        c++;
+    }
+    
+
     GetKey(&key);
     return 1;
 }
 
-void minicross(int xOffset, int yOffset){
+int getInput(){
+    unsigned int key;
+    GetKey(&key);
+    
+    while (key < 49 || key > 57){
+        GetKey(&key);
+    }
+    return(key-48);
+}
+
+void setXY(int numpad[9], int numY[3], int XY[2]){
+    int inp = getInput(); 
+    inp = numpad[inp-1];
+    
+    XY[0] = (inp-1)%3;
+    XY[1] = numY[(inp-1)/3];
+}
+
+void miniTTT(int xOffset, int yOffset){
     int i;
     
     for (i=6; i<18; i+=6){
@@ -90,7 +138,7 @@ void initDisp(){
     
     for (y=0; y<3; y++){
         for (x=0; x<3; x++){
-            minicross(x*20+2, y*20+2); //kleine Linien
+            miniTTT(x*20+2, y*20+2); //kleine Linien
         }
     }
 }
