@@ -26,19 +26,23 @@
 int AddIn_main(int isAppli, unsigned short OptionNum)
 {
     int getInput();
+    void setXY(int numpad[9], int numY[3], int XY[2]);
     void miniTTT(int xOffset, int yOffset);
     void drawShape(int xOffset, int yOffset, int shape[3][3]);
     void initDisp();
     
     unsigned int key;
-    int input;
+    int inp;
     int x,y;
     
-    int numpad[3][3] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
+    int numpad[9] = {
+    7, 8, 9,
+    4, 5, 6,
+    1, 2, 3};
+    
+    int numY[3] = {0, 1, 2};
+    
+    int XY[2] = {0, 0};
     
     int circle[3][3] = {  
         {1, 1, 1},
@@ -56,11 +60,14 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
     
     initDisp();
     Bdisp_PutDisp_DD();
-     
-//    x = ((numpad[input+3%3][input-1%3]-1%3)+1*6)+4;
-//    y = ((input-1%3)+1*6)+4;
-//    drawShape(x, y, cross);
-//    Bdisp_PutDisp_DD();
+    
+    while(1){
+        setXY(numpad, numY, XY);
+    
+        drawShape(XY[0]*6+4, XY[1]*6+4, cross);   
+        Bdisp_PutDisp_DD();
+    }
+    
 
     GetKey(&key);
     return 1;
@@ -74,6 +81,14 @@ int getInput(){
         GetKey(&key);
     }
     return(key-48);
+}
+
+void setXY(int numpad[9], int numY[3], int XY[2]){
+    int inp = getInput(); 
+    inp = numpad[inp-1];
+    
+    XY[0] = (inp-1)%3;
+    XY[1] = numY[(inp-1)/3];
 }
 
 void miniTTT(int xOffset, int yOffset){
