@@ -5,55 +5,55 @@
  .export _AddIn_main
 _AddIn_main: .equ h'0030020c
  .export _getInput
-_getInput: .equ h'0030029e
+_getInput: .equ h'00300308
  .export _setXY
-_setXY: .equ h'003002d0
+_setXY: .equ h'00300368
  .export _miniTTT
-_miniTTT: .equ h'00300344
+_miniTTT: .equ h'003003a8
  .export _drawShape
-_drawShape: .equ h'003003aa
+_drawShape: .equ h'0030040e
  .export _initDisp
-_initDisp: .equ h'0030040a
+_initDisp: .equ h'0030046e
  .export ___LINK_PROTECT
-___LINK_PROTECT: .equ h'00300480
+___LINK_PROTECT: .equ h'003004ec
  .export _SetQuitHandler
-_SetQuitHandler: .equ h'00300484
+_SetQuitHandler: .equ h'003004f0
  .export _OnAppCloseDefault
-_OnAppCloseDefault: .equ h'0030048a
+_OnAppCloseDefault: .equ h'003004f6
  .export __INITSCT_ADDIN
-__INITSCT_ADDIN: .equ h'003004de
+__INITSCT_ADDIN: .equ h'0030054a
  .export _INIT_ADDIN_APPLICATION
-_INIT_ADDIN_APPLICATION: .equ h'00300526
+_INIT_ADDIN_APPLICATION: .equ h'00300592
  .export __divls
-__divls: .equ h'0030059c
+__divls: .equ h'00300608
  .export __modls
-__modls: .equ h'00300650
+__modls: .equ h'003006bc
  .export __quick_odd_mvn
-__quick_odd_mvn: .equ h'00300724
+__quick_odd_mvn: .equ h'00300790
  .export __quick_evn_mvn
-__quick_evn_mvn: .equ h'00300718
+__quick_evn_mvn: .equ h'00300784
  .export _Bdel_cychdr
-_Bdel_cychdr: .equ h'003007bc
+_Bdel_cychdr: .equ h'00300828
  .export _Bdisp_AllClr_DDVRAM
-_Bdisp_AllClr_DDVRAM: .equ h'003007cc
+_Bdisp_AllClr_DDVRAM: .equ h'00300838
  .export _Bdisp_PutDisp_DD
-_Bdisp_PutDisp_DD: .equ h'003007dc
+_Bdisp_PutDisp_DD: .equ h'00300848
  .export _Bdisp_DrawLineVRAM
-_Bdisp_DrawLineVRAM: .equ h'003007ec
+_Bdisp_DrawLineVRAM: .equ h'00300858
  .export _Bdisp_SetPoint_VRAM
-_Bdisp_SetPoint_VRAM: .equ h'003007fc
+_Bdisp_SetPoint_VRAM: .equ h'00300868
  .export _BfileFLS_CloseFile
-_BfileFLS_CloseFile: .equ h'0030080c
+_BfileFLS_CloseFile: .equ h'00300878
  .export _Bkey_Set_RepeatTime_Default
-_Bkey_Set_RepeatTime_Default: .equ h'0030081c
+_Bkey_Set_RepeatTime_Default: .equ h'00300888
  .export _CallbackAtQuitMainFunction
-_CallbackAtQuitMainFunction: .equ h'0030082c
+_CallbackAtQuitMainFunction: .equ h'00300898
  .export _flsFindClose
-_flsFindClose: .equ h'0030083c
+_flsFindClose: .equ h'003008a8
  .export _GetKey
-_GetKey: .equ h'0030084c
+_GetKey: .equ h'003008b8
  .export _GLibAddinAplExecutionCheck
-_GLibAddinAplExecutionCheck: .equ h'0030085c
+_GLibAddinAplExecutionCheck: .equ h'003008c8
  .export _Hmem_SetMMU
-_Hmem_SetMMU: .equ h'0030086c
+_Hmem_SetMMU: .equ h'003008d8
  .end

@@ -32,8 +32,7 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
     void initDisp();
     
     unsigned int key;
-    int inp;
-    int x,y;
+    int c = 0;
     
     int numpad[9] = {
     7, 8, 9,
@@ -43,7 +42,8 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
     int numY[3] = {0, 1, 2};
     
     int XY[2] = {0, 0};
-    
+    int startXY[2] = {0, 0};
+
     int circle[3][3] = {  
         {1, 1, 1},
         {1, 0, 1},
@@ -55,17 +55,32 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
         {0, 1, 0},
         {1, 0, 1}
     };
+    
+    int* shape;
 
     Bdisp_AllClr_DDVRAM();
-    
     initDisp();
     Bdisp_PutDisp_DD();
     
+    setXY(numpad, numY, XY);
+    
     while(1){
+        if (c%2){
+            shape = circle;
+        }
+        else{
+            shape = cross;
+        }
+    
+        startXY[0] = XY[0];
+        startXY[1] = XY[1];
+        
         setXY(numpad, numY, XY);
     
-        drawShape(XY[0]*6+4, XY[1]*6+4, cross);   
+        drawShape(XY[0]*6+4+startXY[0]*20, XY[1]*6+4+startXY[1]*20, shape);   
         Bdisp_PutDisp_DD();
+        
+        c++;
     }
     
 
