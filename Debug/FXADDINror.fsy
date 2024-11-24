@@ -1,59 +1,71 @@
-;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2024.11.05
+;HITACHI OPTIMIZING LINKAGE EDITOR GENERATED FILE 2024.11.24
 ;fsymbol = P
 
 ;SECTION NAME = P
  .export _AddIn_main
 _AddIn_main: .equ h'0030020c
  .export _getInput
-_getInput: .equ h'00300308
- .export _setXY
-_setXY: .equ h'00300368
+_getInput: .equ h'0030033a
+ .export _nextXY
+_nextXY: .equ h'003003b0
  .export _miniTTT
-_miniTTT: .equ h'003003a8
+_miniTTT: .equ h'003003f0
  .export _drawShape
-_drawShape: .equ h'0030040e
+_drawShape: .equ h'00300456
  .export _initDisp
-_initDisp: .equ h'0030046e
+_initDisp: .equ h'003006c4
+ .export _drawOutline
+_drawOutline: .equ h'003004b6
+ .export _eraseOutline
+_eraseOutline: .equ h'00300564
+ .export _memorize
+_memorize: .equ h'00300612
+ .export _nextMove
+_nextMove: .equ h'00300642
  .export ___LINK_PROTECT
-___LINK_PROTECT: .equ h'003004ec
+___LINK_PROTECT: .equ h'00300738
  .export _SetQuitHandler
-_SetQuitHandler: .equ h'003004f0
+_SetQuitHandler: .equ h'0030073c
  .export _OnAppCloseDefault
-_OnAppCloseDefault: .equ h'003004f6
+_OnAppCloseDefault: .equ h'00300742
  .export __INITSCT_ADDIN
-__INITSCT_ADDIN: .equ h'0030054a
+__INITSCT_ADDIN: .equ h'00300796
  .export _INIT_ADDIN_APPLICATION
-_INIT_ADDIN_APPLICATION: .equ h'00300592
+_INIT_ADDIN_APPLICATION: .equ h'003007de
  .export __divls
-__divls: .equ h'00300608
+__divls: .equ h'00300854
  .export __modls
-__modls: .equ h'003006bc
+__modls: .equ h'00300908
+ .export __quick_mvn
+__quick_mvn: .equ h'003009d0
  .export __quick_odd_mvn
-__quick_odd_mvn: .equ h'00300790
+__quick_odd_mvn: .equ h'00300a9c
  .export __quick_evn_mvn
-__quick_evn_mvn: .equ h'00300784
+__quick_evn_mvn: .equ h'00300a90
  .export _Bdel_cychdr
-_Bdel_cychdr: .equ h'00300828
+_Bdel_cychdr: .equ h'00300b34
  .export _Bdisp_AllClr_DDVRAM
-_Bdisp_AllClr_DDVRAM: .equ h'00300838
+_Bdisp_AllClr_DDVRAM: .equ h'00300b44
+ .export _Bdisp_ClearLineVRAM
+_Bdisp_ClearLineVRAM: .equ h'00300b54
  .export _Bdisp_PutDisp_DD
-_Bdisp_PutDisp_DD: .equ h'00300848
+_Bdisp_PutDisp_DD: .equ h'00300b64
  .export _Bdisp_DrawLineVRAM
-_Bdisp_DrawLineVRAM: .equ h'00300858
+_Bdisp_DrawLineVRAM: .equ h'00300b74
  .export _Bdisp_SetPoint_VRAM
-_Bdisp_SetPoint_VRAM: .equ h'00300868
+_Bdisp_SetPoint_VRAM: .equ h'00300b84
  .export _BfileFLS_CloseFile
-_BfileFLS_CloseFile: .equ h'00300878
+_BfileFLS_CloseFile: .equ h'00300b94
  .export _Bkey_Set_RepeatTime_Default
-_Bkey_Set_RepeatTime_Default: .equ h'00300888
+_Bkey_Set_RepeatTime_Default: .equ h'00300ba4
  .export _CallbackAtQuitMainFunction
-_CallbackAtQuitMainFunction: .equ h'00300898
+_CallbackAtQuitMainFunction: .equ h'00300bb4
  .export _flsFindClose
-_flsFindClose: .equ h'003008a8
+_flsFindClose: .equ h'00300bc4
  .export _GetKey
-_GetKey: .equ h'003008b8
+_GetKey: .equ h'00300bd4
  .export _GLibAddinAplExecutionCheck
-_GLibAddinAplExecutionCheck: .equ h'003008c8
+_GLibAddinAplExecutionCheck: .equ h'00300be4
  .export _Hmem_SetMMU
-_Hmem_SetMMU: .equ h'003008d8
+_Hmem_SetMMU: .equ h'00300bf4
  .end

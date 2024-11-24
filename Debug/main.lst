@@ -1,8 +1,8 @@
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    1
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    1
 
 ************ OBJECT LISTING ************
 
-FILE NAME: C:\Users\henry\Documents\GitHub\superTicTacToe\main.c
+FILE NAME: C:\Users\Nutzer\OneDrive\Dokumente\GitHub\superTicTacToe\main.c
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
@@ -33,641 +33,1045 @@ SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
           main.c    25    
           main.c    26    int AddIn_main(int isAppli, unsigned short OptionNum)
 P   00000000              _AddIn_main:                     ; function: AddIn_main
-                                                           ; frame size=148
+                                                           ; frame size=492
                                                            ; used runtime library name:
-                                                           ; __quick_evn_mvn, __quick_odd_mvn
-    00000000 9095                   MOV.W       L380,R0    ; H'FF6C
+                                                           ; __quick_mvn, __quick_evn_mvn, __quick_odd_mvn
+    00000000 909E                   MOV.W       L404,R0    ; H'FE18
           main.c    27    {
           main.c    28        int getInput();
-          main.c    29        void setXY(int numpad[9], int numY[3], int XY[2]);
+          main.c    29        void nextXY(int numpad[9], int numY[3], int nXY[2]);
           main.c    30        void miniTTT(int xOffset, int yOffset);
           main.c    31        void drawShape(int xOffset, int yOffset, int shape[3][3]);
           main.c    32        void initDisp();
-          main.c    33        
-          main.c    34        unsigned int key;
-          main.c    35        int c = 0;
-    00000002 EC00                   MOV         #0,R12
-          main.c    36        
-          main.c    37        int numpad[9] = {
-          main.c    38        7, 8, 9,
-          main.c    39        4, 5, 6,
-          main.c    40        1, 2, 3};
-    00000004 D24A                   MOV.L       L380+2,R2  ; L309
+          main.c    33        void drawOutline(int XY[2]);
+          main.c    34        void eraseOutline(int XY[2]);
+          main.c    35        void memorize(int memory[3][3][3][3], int XY1[2], int XY2[2], int player);
+          main.c    36        void nextMove(int memory[3][3][3][3], int nXY[2], int numpad[9], int numY[3], int XY[2]);
+          main.c    37        
+          main.c    38        unsigned int key;
+          main.c    39        int c = 0;
+    00000002 E300                   MOV         #0,R3
+          main.c    40        
+          main.c    41        int numpad[9] = {
+          main.c    42        7, 8, 9,
+          main.c    43        4, 5, 6,
+          main.c    44        1, 2, 3};
+    00000004 919D                   MOV.W       L404+2,R1  ; H'01C4
     00000006 3F0C                   ADD         R0,R15
-    00000008 D34A                   MOV.L       L380+6,R3  ; __quick_odd_mvn
-    0000000A 68F3                   MOV         R15,R8
-    0000000C 7870                   ADD         #112,R8
-    0000000E 61F3                   MOV         R15,R1
-    00000010 7170                   ADD         #112,R1
-    00000012 430B                   JSR         @R3
+    00000008 D250                   MOV.L       L404+12,R2 ; L313
+    0000000A 31FC                   ADD         R15,R1
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    2
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    2
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-    00000014 E024                   MOV         #36,R0
-          main.c    41        
-          main.c    42        int numY[3] = {0, 1, 2};
-    00000016 6BF3                   MOV         R15,R11
-    00000018 D247                   MOV.L       L380+10,R2 ; L311
-    0000001A 61F3                   MOV         R15,R1
-    0000001C D345                   MOV.L       L380+6,R3  ; __quick_odd_mvn
-    0000001E 7B64                   ADD         #100,R11
-    00000020 7164                   ADD         #100,R1
-    00000022 430B                   JSR         @R3
-    00000024 E00C                   MOV         #12,R0
-          main.c    43        
-          main.c    44        int XY[2] = {0, 0};
-    00000026 6EF3                   MOV         R15,R14
-    00000028 D244                   MOV.L       L380+14,R2 ; L313
-    0000002A 61F3                   MOV         R15,R1
-    0000002C D344                   MOV.L       L380+18,R3 ; __quick_evn_mvn
-    0000002E 7E5C                   ADD         #92,R14
-    00000030 715C                   ADD         #92,R1
-    00000032 430B                   JSR         @R3
-    00000034 E008                   MOV         #8,R0
-          main.c    45        int startXY[2] = {0, 0};
-    00000036 6DF3                   MOV         R15,R13
-    00000038 D242                   MOV.L       L380+22,R2 ; L315
-    0000003A 61F3                   MOV         R15,R1
-    0000003C D340                   MOV.L       L380+18,R3 ; __quick_evn_mvn
-    0000003E 7D54                   ADD         #84,R13
-    00000040 7154                   ADD         #84,R1
-    00000042 430B                   JSR         @R3
-    00000044 E008                   MOV         #8,R0
-          main.c    46    
-          main.c    47        int circle[3][3] = {  
-          main.c    48            {1, 1, 1},
-          main.c    49            {1, 0, 1},
-          main.c    50            {1, 1, 1}
-          main.c    51        };
-    00000046 61F3                   MOV         R15,R1
-    00000048 D23F                   MOV.L       L380+26,R2 ; L317
-    0000004A 7130                   ADD         #48,R1
-    0000004C D339                   MOV.L       L380+6,R3  ; __quick_odd_mvn
-    0000004E 430B                   JSR         @R3
-    00000050 E024                   MOV         #36,R0
+    0000000C 2F32                   MOV.L       R3,@R15
+    0000000E D350                   MOV.L       L404+16,R3 ; __quick_odd_mvn
+    00000010 430B                   JSR         @R3
+    00000012 E024                   MOV         #36,R0
+          main.c    45        
+          main.c    46        int memory[3][3][3][3] = {
+          main.c    47        {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+          main.c    48        
+          main.c    49        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+          main.c    50        
+          main.c    51        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}},
           main.c    52        
-          main.c    53        int cross[3][3] = { 
-          main.c    54            {1, 0, 1},
-          main.c    55            {0, 1, 0},
-          main.c    56            {1, 0, 1}
-          main.c    57        };
-    00000052 61F3                   MOV         R15,R1
-    00000054 D23D                   MOV.L       L380+30,R2 ; L319
-    00000056 710C                   ADD         #12,R1
-    00000058 D336                   MOV.L       L380+6,R3  ; __quick_odd_mvn
-    0000005A 430B                   JSR         @R3
-    0000005C E024                   MOV         #36,R0
+          main.c    53        {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+          main.c    54       
+          main.c    55        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+          main.c    56        
+          main.c    57        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}},
           main.c    58        
-          main.c    59        int* shape;
-          main.c    60    
-
-
-
-
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    3
-
-
-SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
-
-          main.c    61        Bdisp_AllClr_DDVRAM();
-    0000005E D13C                   MOV.L       L380+34,R1 ; _Bdisp_AllClr_DDVRAM
-    00000060 410B                   JSR         @R1
-    00000062 0009                   NOP
-          main.c    62        initDisp();
-    00000064 B0FD                   BSR         _initDisp
-    00000066 0009                   NOP
-          main.c    63        Bdisp_PutDisp_DD();
-    00000068 D13A                   MOV.L       L380+38,R1 ; _Bdisp_PutDisp_DD
-    0000006A 410B                   JSR         @R1
-    0000006C 0009                   NOP
-          main.c    64        
-          main.c    65        setXY(numpad, numY, XY);
-    0000006E 66E3                   MOV         R14,R6
-    00000070 65B3                   MOV         R11,R5
-    00000072 B073                   BSR         _setXY
-    00000074 6483                   MOV         R8,R4
-    00000076 6AD3                   MOV         R13,R10
-    00000078 69E3                   MOV         R14,R9
-    0000007A 7D04                   ADD         #4,R13
-    0000007C 2FD2                   MOV.L       R13,@R15
-    0000007E 6393                   MOV         R9,R3
-    00000080 7304                   ADD         #4,R3
-    00000082 1F31                   MOV.L       R3,@(4,R15)
+          main.c    59        {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+          main.c    60        
+          main.c    61        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}},
+          main.c    62        
+          main.c    63        {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}}
+          main.c    64        };
+    00000014 9B96                   MOV.W       L404+4,R11 ; H'0080
+    00000016 3BFC                   ADD         R15,R11
+    00000018 9194                   MOV.W       L404+4,R1  ; H'0080
+    0000001A D24E                   MOV.L       L404+20,R2 ; L315
+    0000001C 9093                   MOV.W       L404+6,R0  ; H'0144
+    0000001E D34E                   MOV.L       L404+24,R3 ; __quick_mvn
+    00000020 430B                   JSR         @R3
+    00000022 31FC                   ADD         R15,R1
+          main.c    65        
           main.c    66        
-          main.c    67        while(1){
-    00000084              L364:                             
-          main.c    68            if (c%2){
-    00000084 60C3                   MOV         R12,R0
-    00000086 4011                   CMP/PZ      R0
-    00000088 8B01                   BF          L366
-    0000008A A005                   BRA         L367
-    0000008C C901                   AND         #1,R0
-    0000008E              L366:                             
-    0000008E 6007                   NOT         R0,R0
-    00000090 7001                   ADD         #1,R0
-    00000092 C901                   AND         #1,R0
-    00000094 6007                   NOT         R0,R0
-    00000096 7001                   ADD         #1,R0
-    00000098              L367:                             
-    00000098 2008                   TST         R0,R0
-    0000009A 8902                   BT          L365
-          main.c    69                shape = circle;
-    0000009C 6DF3                   MOV         R15,R13
-    0000009E A002                   BRA         L368
-    000000A0 7D30                   ADD         #48,R13
-    000000A2              L365:                             
-          main.c    70            }
-          main.c    71            else{
-          main.c    72                shape = cross;
-    000000A2 6DF3                   MOV         R15,R13
-    000000A4 7D0C                   ADD         #12,R13
-    000000A6              L368:                             
-          main.c    73            }
-          main.c    74        
-          main.c    75            startXY[0] = XY[0];
-          main.c    76            startXY[1] = XY[1];
+          main.c    67        
+          main.c    68        int numY[3] = {0, 1, 2};
+    00000024 D24D                   MOV.L       L404+28,R2 ; L317
+    00000026 61F3                   MOV         R15,R1
+    00000028 D349                   MOV.L       L404+16,R3 ; __quick_odd_mvn
+    0000002A 7174                   ADD         #116,R1
+    0000002C 430B                   JSR         @R3
+    0000002E E00C                   MOV         #12,R0
+          main.c    69        
+          main.c    70        int XY1[2] = {0, 0};
+    00000030 D24B                   MOV.L       L404+32,R2 ; L319
+    00000032 6AF3                   MOV         R15,R10
+    00000034 D34B                   MOV.L       L404+36,R3 ; __quick_evn_mvn
+    00000036 61F3                   MOV         R15,R1
+    00000038 7A6C                   ADD         #108,R10
+    0000003A 716C                   ADD         #108,R1
+    0000003C 430B                   JSR         @R3
+    0000003E E008                   MOV         #8,R0
+          main.c    71        int XY2[2] = {0, 0};
+    00000040 D249                   MOV.L       L404+40,R2 ; L321
+    00000042 6EF3                   MOV         R15,R14
+    00000044 D347                   MOV.L       L404+36,R3 ; __quick_evn_mvn
+    00000046 61F3                   MOV         R15,R1
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    4
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    3
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-          main.c    77            
-          main.c    78            setXY(numpad, numY, XY);
-    000000A6 66E3                   MOV         R14,R6
-    000000A8 6392                   MOV.L       @R9,R3
-    000000AA 65B3                   MOV         R11,R5
-    000000AC 2A32                   MOV.L       R3,@R10
-    000000AE 62F2                   MOV.L       @R15,R2
-    000000B0 53F1                   MOV.L       @(4,R15),R3
-    000000B2 6132                   MOV.L       @R3,R1
-    000000B4 2212                   MOV.L       R1,@R2
-    000000B6 B051                   BSR         _setXY
-    000000B8 6483                   MOV         R8,R4
+    00000048 7E64                   ADD         #100,R14
+    0000004A 7164                   ADD         #100,R1
+    0000004C 430B                   JSR         @R3
+    0000004E E008                   MOV         #8,R0
+          main.c    72        int nXY[2] = {0, 0};
+    00000050 D246                   MOV.L       L404+44,R2 ; L323
+    00000052 69F3                   MOV         R15,R9
+    00000054 D343                   MOV.L       L404+36,R3 ; __quick_evn_mvn
+    00000056 61F3                   MOV         R15,R1
+    00000058 795C                   ADD         #92,R9
+    0000005A 715C                   ADD         #92,R1
+    0000005C 430B                   JSR         @R3
+    0000005E E008                   MOV         #8,R0
+          main.c    73    
+          main.c    74        int circle[3][3] = {  
+          main.c    75            {1, 1, 1},
+          main.c    76            {1, 0, 1},
+          main.c    77            {1, 1, 1}
+          main.c    78        };
+    00000060 D243                   MOV.L       L404+48,R2 ; L325
+    00000062 61F3                   MOV         R15,R1
+    00000064 D33A                   MOV.L       L404+16,R3 ; __quick_odd_mvn
+    00000066 7138                   ADD         #56,R1
+    00000068 430B                   JSR         @R3
+    0000006A E024                   MOV         #36,R0
           main.c    79        
-          main.c    80            drawShape(XY[0]*6+4+startXY[0]*20, XY[1]*6+4+startXY[1]*20, shape);   
-    000000BA 66D3                   MOV         R13,R6
-    000000BC 55F1                   MOV.L       @(4,R15),R5
-    000000BE 6552                   MOV.L       @R5,R5
-    000000C0 62F2                   MOV.L       @R15,R2
-    000000C2 6353                   MOV         R5,R3
-    000000C4 6492                   MOV.L       @R9,R4
-    000000C6 4500                   SHLL        R5
-    000000C8 6222                   MOV.L       @R2,R2
-    000000CA 4308                   SHLL2       R3
-    000000CC 353C                   ADD         R3,R5
-    000000CE 6323                   MOV         R2,R3
-    000000D0 4208                   SHLL2       R2
-    000000D2 323C                   ADD         R3,R2
-    000000D4 4208                   SHLL2       R2
-    000000D6 352C                   ADD         R2,R5
-    000000D8 62A2                   MOV.L       @R10,R2
-    000000DA 7504                   ADD         #4,R5
-    000000DC 6343                   MOV         R4,R3
-    000000DE 4400                   SHLL        R4
-    000000E0 4308                   SHLL2       R3
-    000000E2 343C                   ADD         R3,R4
-    000000E4 6323                   MOV         R2,R3
-    000000E6 4208                   SHLL2       R2
-    000000E8 323C                   ADD         R3,R2
-    000000EA 4208                   SHLL2       R2
-    000000EC 342C                   ADD         R2,R4
-    000000EE B088                   BSR         _drawShape
-    000000F0 7404                   ADD         #4,R4
-          main.c    81            Bdisp_PutDisp_DD();
-    000000F2 D318                   MOV.L       L380+38,R3 ; _Bdisp_PutDisp_DD
-    000000F4 430B                   JSR         @R3
-    000000F6 0009                   NOP
-    000000F8 AFC4                   BRA         L364
-          main.c    82            
-          main.c    83            c++;
-    000000FA 7C01                   ADD         #1,R12
-          main.c    84        }
-          main.c    85        
-          main.c    86    
-          main.c    87        GetKey(&key);
-          main.c    88        return 1;
-          main.c    89    }
-          main.c    90    
+          main.c    80        int cross[3][3] = { 
+          main.c    81            {1, 0, 1},
+          main.c    82            {0, 1, 0},
+          main.c    83            {1, 0, 1}
+          main.c    84        };
+    0000006C D241                   MOV.L       L404+52,R2 ; L327
+    0000006E 61F3                   MOV         R15,R1
+    00000070 D337                   MOV.L       L404+16,R3 ; __quick_odd_mvn
+    00000072 7114                   ADD         #20,R1
+    00000074 430B                   JSR         @R3
+    00000076 E024                   MOV         #36,R0
+          main.c    85    
+          main.c    86        int* shape;
+          main.c    87    
+          main.c    88        Bdisp_AllClr_DDVRAM();
+    00000078 D13F                   MOV.L       L404+56,R1 ; _Bdisp_AllClr_DDVRAM
+    0000007A 410B                   JSR         @R1
+    0000007C 0009                   NOP
+          main.c    89        initDisp();
+    0000007E B21B                   BSR         _initDisp
+    00000080 0009                   NOP
+          main.c    90        Bdisp_PutDisp_DD();
+    00000082 D13E                   MOV.L       L404+60,R1 ; _Bdisp_PutDisp_DD
+    00000084 410B                   JSR         @R1
+    00000086 0009                   NOP
+    00000088 68A3                   MOV         R10,R8
+    0000008A 6CE3                   MOV         R14,R12
+    0000008C 63A3                   MOV         R10,R3
+    0000008E 7304                   ADD         #4,R3
+    00000090 1F31                   MOV.L       R3,@(4,R15)
+    00000092 6DC3                   MOV         R12,R13
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    5
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    4
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-          main.c    91    int getInput(){
-    000000FC              _getInput:                       ; function: getInput
+    00000094 7D04                   ADD         #4,R13
+    00000096 6293                   MOV         R9,R2
+    00000098 1F22                   MOV.L       R2,@(8,R15)
+    0000009A 6123                   MOV         R2,R1
+    0000009C 7104                   ADD         #4,R1
+    0000009E 1F13                   MOV.L       R1,@(12,R15)
+          main.c    91        
+          main.c    92        while(1){
+    000000A0              L388:                             
+          main.c    93            //if (c%2){
+          main.c    94                //shape = circle;
+          main.c    95            //}
+          main.c    96            //else{
+          main.c    97                //shape = cross;
+          main.c    98            //}
+          main.c    99            
+          main.c   100            nextMove(memory, nXY, numpad, numY, XY2);
+    000000A0 2FE6                   MOV.L       R14,@-R15
+    000000A2 6593                   MOV         R9,R5
+    000000A4 9650                   MOV.W       L404+8,R6  ; H'01C8
+    000000A6 67F3                   MOV         R15,R7
+    000000A8 7778                   ADD         #120,R7
+    000000AA 36FC                   ADD         R15,R6
+    000000AC B1C3                   BSR         _nextMove
+    000000AE 64B3                   MOV         R11,R4
+    000000B0 7F04                   ADD         #4,R15
+          main.c   101            XY1[0] = XY2[0];
+    000000B2 63C2                   MOV.L       @R12,R3
+    000000B4 2832                   MOV.L       R3,@R8
+          main.c   102            XY1[1] = XY2[1];
+    000000B6 52F1                   MOV.L       @(4,R15),R2
+    000000B8 63D2                   MOV.L       @R13,R3
+    000000BA 2232                   MOV.L       R3,@R2
+          main.c   103            XY2[0] = nXY[0];
+    000000BC 52F2                   MOV.L       @(8,R15),R2
+    000000BE 6322                   MOV.L       @R2,R3
+    000000C0 2C32                   MOV.L       R3,@R12
+          main.c   104            XY2[1] = nXY[1];
+    000000C2 52F3                   MOV.L       @(12,R15),R2
+    000000C4 6322                   MOV.L       @R2,R3
+    000000C6 2D32                   MOV.L       R3,@R13
+          main.c   105            
+          main.c   106            memorize(memory, XY1, XY2, (c%2)+1);
+    000000C8 60F2                   MOV.L       @R15,R0
+    000000CA 4011                   CMP/PZ      R0
+    000000CC 8B01                   BF          L389
+    000000CE A005                   BRA         L390
+    000000D0 C901                   AND         #1,R0
+    000000D2              L389:                             
+    000000D2 6007                   NOT         R0,R0
+    000000D4 7001                   ADD         #1,R0
+    000000D6 C901                   AND         #1,R0
+    000000D8 6007                   NOT         R0,R0
+    000000DA 7001                   ADD         #1,R0
+    000000DC              L390:                             
+    000000DC 6703                   MOV         R0,R7
+    000000DE 7701                   ADD         #1,R7
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    5
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000000E0 66E3                   MOV         R14,R6
+    000000E2 65A3                   MOV         R10,R5
+    000000E4 B18F                   BSR         _memorize
+    000000E6 64B3                   MOV         R11,R4
+          main.c   107            
+          main.c   108            drawShape(XY2[0]*6+4+XY1[0]*20, XY2[1]*6+4+XY1[1]*20, circle);   
+    000000E8 65D2                   MOV.L       @R13,R5
+    000000EA 66F3                   MOV         R15,R6
+    000000EC 52F1                   MOV.L       @(4,R15),R2
+    000000EE 6353                   MOV         R5,R3
+    000000F0 64C2                   MOV.L       @R12,R4
+    000000F2 7638                   ADD         #56,R6
+    000000F4 6222                   MOV.L       @R2,R2
+    000000F6 4500                   SHLL        R5
+    000000F8 4308                   SHLL2       R3
+    000000FA 353C                   ADD         R3,R5
+    000000FC 6323                   MOV         R2,R3
+    000000FE 4208                   SHLL2       R2
+    00000100 323C                   ADD         R3,R2
+    00000102 4208                   SHLL2       R2
+    00000104 352C                   ADD         R2,R5
+    00000106 7504                   ADD         #4,R5
+    00000108 6282                   MOV.L       @R8,R2
+    0000010A 6343                   MOV         R4,R3
+    0000010C 4400                   SHLL        R4
+    0000010E 4308                   SHLL2       R3
+    00000110 343C                   ADD         R3,R4
+    00000112 6323                   MOV         R2,R3
+    00000114 4208                   SHLL2       R2
+    00000116 323C                   ADD         R3,R2
+    00000118 4208                   SHLL2       R2
+    0000011A 342C                   ADD         R2,R4
+    0000011C B095                   BSR         _drawShape
+    0000011E 7404                   ADD         #4,R4
+          main.c   109            Bdisp_PutDisp_DD();
+    00000120 D316                   MOV.L       L404+60,R3 ; _Bdisp_PutDisp_DD
+    00000122 430B                   JSR         @R3
+    00000124 0009                   NOP
+          main.c   110            
+          main.c   111            c++;
+    00000126 62F2                   MOV.L       @R15,R2
+    00000128 7201                   ADD         #1,R2
+    0000012A AFB9                   BRA         L388
+    0000012C 2F22                   MOV.L       R2,@R15
+          main.c   112        }
+          main.c   113        
+          main.c   114    
+          main.c   115        GetKey(&key);
+          main.c   116        return 1;
+          main.c   117    }
+          main.c   118    
+          main.c   119    int getInput(){
+    0000012E              _getInput:                       ; function: getInput
                                                            ; frame size=16
-    000000FC 2FE6                   MOV.L       R14,@-R15
-    000000FE 2FD6                   MOV.L       R13,@-R15
-    00000100 4F22                   STS.L       PR,@-R15
-    00000102 7FFC                   ADD         #-4,R15
-          main.c    92        unsigned int key;
-          main.c    93        GetKey(&key);
-    00000104 DE14                   MOV.L       L380+42,R14; _GetKey
-    00000106 4E0B                   JSR         @R14
-    00000108 64F3                   MOV         R15,R4
-          main.c    94        
-          main.c    95        while (key < 49 || key > 57){
-    0000010A A002                   BRA         L370
-    0000010C ED31                   MOV         #49,R13
-    0000010E              L371:                             
-          main.c    96            GetKey(&key);
-    0000010E 4E0B                   JSR         @R14
-    00000110 64F3                   MOV         R15,R4
-    00000112              L370:                             
-    00000112 62F2                   MOV.L       @R15,R2
-    00000114 32D2                   CMP/HS      R13,R2
-    00000116 8BFA                   BF          L371
-    00000118 63F2                   MOV.L       @R15,R3
-    0000011A E139                   MOV         #57,R1
-    0000011C 3316                   CMP/HI      R1,R3
-    0000011E 89F6                   BT          L371
-          main.c    97        }
-          main.c    98        return(key-48);
-    00000120 60F2                   MOV.L       @R15,R0
-          main.c    99    }
-    00000122 7F04                   ADD         #4,R15
-    00000124 4F26                   LDS.L       @R15+,PR
-    00000126 70D0                   ADD         #-48,R0
-    00000128 6DF6                   MOV.L       @R15+,R13
-    0000012A 000B                   RTS
-    0000012C 6EF6                   MOV.L       @R15+,R14
-    0000012E              L380:                             
-    0000012E FF6C                   .DATA.W     H'FF6C
-    00000130 <00000000>             .DATA.L     L309
-    00000134 <00000000>             .DATA.L     __quick_odd_mvn
-    00000138 <00000000>             .DATA.L     L311
-    0000013C <00000000>             .DATA.L     L313
-    00000140 <00000000>             .DATA.L     __quick_evn_mvn
-    00000144 <00000000>             .DATA.L     L315
-    00000148 <00000000>             .DATA.L     L317
-    0000014C <00000000>             .DATA.L     L319
-    00000150 <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
-    00000154 <00000000>             .DATA.L     _Bdisp_PutDisp_DD
-    00000158 <00000000>             .DATA.L     _GetKey
-          main.c   100    
-          main.c   101    void setXY(int numpad[9], int numY[3], int XY[2]){
-    0000015C              _setXY:                          ; function: setXY
+    0000012E 2FE6                   MOV.L       R14,@-R15
+    00000130 2FD6                   MOV.L       R13,@-R15
+    00000132 4F22                   STS.L       PR,@-R15
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    6
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+          main.c   120        unsigned int key;
+          main.c   121        GetKey(&key);
+    00000134 DE12                   MOV.L       L404+64,R14; _GetKey
+    00000136 7FFC                   ADD         #-4,R15
+    00000138 4E0B                   JSR         @R14
+    0000013A 64F3                   MOV         R15,R4
+          main.c   122        
+          main.c   123        while (key < 49 || key > 57){
+    0000013C A024                   BRA         L392
+    0000013E ED31                   MOV         #49,R13
+    00000140              L404:                             
+    00000140 FE18                   .DATA.W     H'FE18
+    00000142 01C4                   .DATA.W     H'01C4
+    00000144 0080                   .DATA.W     H'0080
+    00000146 0144                   .DATA.W     H'0144
+    00000148 01C8                   .DATA.W     H'01C8
+    0000014A 0000                   .DATA.W     0
+    0000014C <00000000>             .DATA.L     L313
+    00000150 <00000000>             .DATA.L     __quick_odd_mvn
+    00000154 <00000000>             .DATA.L     L315
+    00000158 <00000000>             .DATA.L     __quick_mvn
+    0000015C <00000000>             .DATA.L     L317
+    00000160 <00000000>             .DATA.L     L319
+    00000164 <00000000>             .DATA.L     __quick_evn_mvn
+    00000168 <00000000>             .DATA.L     L321
+    0000016C <00000000>             .DATA.L     L323
+    00000170 <00000000>             .DATA.L     L325
+    00000174 <00000000>             .DATA.L     L327
+    00000178 <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
+    0000017C <00000000>             .DATA.L     _Bdisp_PutDisp_DD
+    00000180 <00000000>             .DATA.L     _GetKey
+    00000184              L393:                             
+          main.c   124            GetKey(&key);
+    00000184 4E0B                   JSR         @R14
+    00000186 64F3                   MOV         R15,R4
+    00000188              L392:                             
+    00000188 62F2                   MOV.L       @R15,R2
+    0000018A 32D2                   CMP/HS      R13,R2
+    0000018C 8BFA                   BF          L393
+    0000018E E139                   MOV         #57,R1
+    00000190 63F2                   MOV.L       @R15,R3
+    00000192 3316                   CMP/HI      R1,R3
+    00000194 89F6                   BT          L393
+          main.c   125        }
+          main.c   126        return(key-48);
+    00000196 60F2                   MOV.L       @R15,R0
+    00000198 70D0                   ADD         #-48,R0
+          main.c   127    }
+    0000019A 7F04                   ADD         #4,R15
+    0000019C 4F26                   LDS.L       @R15+,PR
+    0000019E 6DF6                   MOV.L       @R15+,R13
+    000001A0 000B                   RTS
+    000001A2 6EF6                   MOV.L       @R15+,R14
+          main.c   128    
+          main.c   129    void nextXY(int numpad[9], int numY[3], int XY[2]){
+    000001A4              _nextXY:                         ; function: nextXY
                                                            ; frame size=16
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    7
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
                                                            ; used runtime library name:
                                                            ; __divls, __modls
-
-
-
-
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    6
-
-
-SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
-
-    0000015C 4F22                   STS.L       PR,@-R15
-    0000015E 7FF4                   ADD         #-12,R15
-    00000160 1F42                   MOV.L       R4,@(8,R15)
-    00000162 1F51                   MOV.L       R5,@(4,R15)
-          main.c   102        int inp = getInput(); 
-    00000164 BFCA                   BSR         _getInput
-    00000166 2F62                   MOV.L       R6,@R15
-          main.c   103        inp = numpad[inp-1];
-          main.c   104        
-          main.c   105        XY[0] = (inp-1)%3;
-    00000168 63F2                   MOV.L       @R15,R3
-    0000016A 6503                   MOV         R0,R5
-    0000016C D258                   MOV.L       L381,R2    ; __modls
-    0000016E E403                   MOV         #3,R4
-    00000170 50F2                   MOV.L       @(8,R15),R0
-    00000172 75FF                   ADD         #-1,R5
-    00000174 4508                   SHLL2       R5
-    00000176 065E                   MOV.L       @(R0,R5),R6
-    00000178 76FF                   ADD         #-1,R6
-    0000017A 6163                   MOV         R6,R1
-    0000017C 420B                   JSR         @R2
-    0000017E 6043                   MOV         R4,R0
-    00000180 2302                   MOV.L       R0,@R3
-          main.c   106        XY[1] = numY[(inp-1)/3];
-    00000182 6163                   MOV         R6,R1
-    00000184 D253                   MOV.L       L381+4,R2  ; __divls
-    00000186 63F2                   MOV.L       @R15,R3
-    00000188 420B                   JSR         @R2
-    0000018A 6043                   MOV         R4,R0
-    0000018C 51F1                   MOV.L       @(4,R15),R1
-    0000018E 4008                   SHLL2       R0
-    00000190 021E                   MOV.L       @(R0,R1),R2
-    00000192 1321                   MOV.L       R2,@(4,R3)
-          main.c   107    }
-    00000194 7F0C                   ADD         #12,R15
-    00000196 4F26                   LDS.L       @R15+,PR
-    00000198 000B                   RTS
-    0000019A 0009                   NOP
-          main.c   108    
-          main.c   109    void miniTTT(int xOffset, int yOffset){
-    0000019C              _miniTTT:                        ; function: miniTTT
+    000001A4 4F22                   STS.L       PR,@-R15
+    000001A6 7FF4                   ADD         #-12,R15
+    000001A8 1F42                   MOV.L       R4,@(8,R15)
+    000001AA 1F51                   MOV.L       R5,@(4,R15)
+          main.c   130        int inp = getInput(); 
+    000001AC BFBF                   BSR         _getInput
+    000001AE 2F62                   MOV.L       R6,@R15
+          main.c   131        inp = numpad[inp-1];
+          main.c   132        
+          main.c   133        XY[0] = (inp-1)%3;
+    000001B0 63F2                   MOV.L       @R15,R3
+    000001B2 6503                   MOV         R0,R5
+    000001B4 D2BB                   MOV.L       L405,R2    ; __modls
+    000001B6 E403                   MOV         #3,R4
+    000001B8 50F2                   MOV.L       @(8,R15),R0
+    000001BA 75FF                   ADD         #-1,R5
+    000001BC 4508                   SHLL2       R5
+    000001BE 065E                   MOV.L       @(R0,R5),R6
+    000001C0 76FF                   ADD         #-1,R6
+    000001C2 6163                   MOV         R6,R1
+    000001C4 420B                   JSR         @R2
+    000001C6 6043                   MOV         R4,R0
+    000001C8 2302                   MOV.L       R0,@R3
+          main.c   134        XY[1] = numY[(inp-1)/3];
+    000001CA 6163                   MOV         R6,R1
+    000001CC D2B6                   MOV.L       L405+4,R2  ; __divls
+    000001CE 63F2                   MOV.L       @R15,R3
+    000001D0 420B                   JSR         @R2
+    000001D2 6043                   MOV         R4,R0
+    000001D4 51F1                   MOV.L       @(4,R15),R1
+    000001D6 4008                   SHLL2       R0
+    000001D8 021E                   MOV.L       @(R0,R1),R2
+    000001DA 1321                   MOV.L       R2,@(4,R3)
+          main.c   135    }
+    000001DC 7F0C                   ADD         #12,R15
+    000001DE 4F26                   LDS.L       @R15+,PR
+    000001E0 000B                   RTS
+    000001E2 0009                   NOP
+          main.c   136    
+          main.c   137    void miniTTT(int xOffset, int yOffset){
+    000001E4              _miniTTT:                        ; function: miniTTT
                                                            ; frame size=40
-    0000019C 2FE6                   MOV.L       R14,@-R15
-    0000019E 6353                   MOV         R5,R3
-    000001A0 2FD6                   MOV.L       R13,@-R15
-    000001A2 6E43                   MOV         R4,R14
-    000001A4 2FC6                   MOV.L       R12,@-R15
-    000001A6 6D53                   MOV         R5,R13
-    000001A8 2FB6                   MOV.L       R11,@-R15
-    000001AA 7E06                   ADD         #6,R14
-    000001AC DC4A                   MOV.L       L381+8,R12 ; _Bdisp_DrawLineVRAM
-    000001AE 7311                   ADD         #17,R3
-    000001B0 2FA6                   MOV.L       R10,@-R15
-          main.c   110        int i;
-          main.c   111        
-          main.c   112        for (i=6; i<18; i+=6){
-    000001B2 EB06                   MOV         #6,R11
+    000001E4 2FE6                   MOV.L       R14,@-R15
+    000001E6 6353                   MOV         R5,R3
+    000001E8 2FD6                   MOV.L       R13,@-R15
+    000001EA 6E43                   MOV         R4,R14
+    000001EC 2FC6                   MOV.L       R12,@-R15
+    000001EE 6D53                   MOV         R5,R13
+    000001F0 2FB6                   MOV.L       R11,@-R15
+    000001F2 7E06                   ADD         #6,R14
+    000001F4 DCAD                   MOV.L       L405+8,R12 ; _Bdisp_DrawLineVRAM
+    000001F6 7311                   ADD         #17,R3
+    000001F8 2FA6                   MOV.L       R10,@-R15
+          main.c   138        int i;
+          main.c   139        
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    7
-
-
-SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
-
-    000001B4 2F96                   MOV.L       R9,@-R15
-    000001B6 6A53                   MOV         R5,R10
-    000001B8 2F86                   MOV.L       R8,@-R15
-    000001BA 6943                   MOV         R4,R9
-    000001BC 4F22                   STS.L       PR,@-R15
-    000001BE 7D06                   ADD         #6,R13
-    000001C0 7FF8                   ADD         #-8,R15
-    000001C2 E812                   MOV         #18,R8
-    000001C4 1F31                   MOV.L       R3,@(4,R15)
-    000001C6 6293                   MOV         R9,R2
-    000001C8 7211                   ADD         #17,R2
-    000001CA 2F22                   MOV.L       R2,@R15
-    000001CC              L373:                             
-          main.c   113        Bdisp_DrawLineVRAM(i+xOffset, 1+yOffset, i+xOffset, 17+yOffset);  //vertikal
-    000001CC 57F1                   MOV.L       @(4,R15),R7
-    000001CE 66E3                   MOV         R14,R6
-    000001D0 65A3                   MOV         R10,R5
-    000001D2 7501                   ADD         #1,R5
-    000001D4 4C0B                   JSR         @R12
-    000001D6 64E3                   MOV         R14,R4
-          main.c   114        Bdisp_DrawLineVRAM(1+xOffset, i+yOffset, 17+xOffset, i+yOffset);  //horizontal
-    000001D8 66F2                   MOV.L       @R15,R6
-    000001DA 65D3                   MOV         R13,R5
-    000001DC 67D3                   MOV         R13,R7
-    000001DE 6493                   MOV         R9,R4
-    000001E0 4C0B                   JSR         @R12
-    000001E2 7401                   ADD         #1,R4
-    000001E4 7B06                   ADD         #6,R11
-    000001E6 7D06                   ADD         #6,R13
-    000001E8 3B83                   CMP/GE      R8,R11
-    000001EA 8FEF                   BF/S        L373
-    000001EC 7E06                   ADD         #6,R14
-          main.c   115        }
-          main.c   116    }
-    000001EE 7F08                   ADD         #8,R15
-    000001F0 4F26                   LDS.L       @R15+,PR
-    000001F2 68F6                   MOV.L       @R15+,R8
-    000001F4 69F6                   MOV.L       @R15+,R9
-    000001F6 6AF6                   MOV.L       @R15+,R10
-    000001F8 6BF6                   MOV.L       @R15+,R11
-    000001FA 6CF6                   MOV.L       @R15+,R12
-    000001FC 6DF6                   MOV.L       @R15+,R13
-    000001FE 000B                   RTS
-    00000200 6EF6                   MOV.L       @R15+,R14
-          main.c   117    
-          main.c   118    void drawShape(int xOffset, int yOffset, int shape[3][3]){
-    00000202              _drawShape:                      ; function: drawShape
-                                                           ; frame size=44
-    00000202 2FE6                   MOV.L       R14,@-R15
-    00000204 2FD6                   MOV.L       R13,@-R15
-    00000206 2FC6                   MOV.L       R12,@-R15
-    00000208 2FB6                   MOV.L       R11,@-R15
-          main.c   119        int x;
-          main.c   120        int y;
-          main.c   121        
-          main.c   122        for (y=0; y<3; y++){
-    0000020A EB03                   MOV         #3,R11
-
-
-
-
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    8
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    8
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-    0000020C 2FA6                   MOV.L       R10,@-R15
-    0000020E 2F96                   MOV.L       R9,@-R15
-    00000210 2F86                   MOV.L       R8,@-R15
-    00000212 E900                   MOV         #0,R9
-    00000214 4F22                   STS.L       PR,@-R15
-    00000216 6C93                   MOV         R9,R12
-    00000218 7FF4                   ADD         #-12,R15
-    0000021A 1F41                   MOV.L       R4,@(4,R15)
-    0000021C 1F52                   MOV.L       R5,@(8,R15)
-    0000021E 2F62                   MOV.L       R6,@R15
-    00000220              L374:                             
-    00000220 5DF1                   MOV.L       @(4,R15),R13
-    00000222 6EC3                   MOV         R12,R14
-    00000224 62F2                   MOV.L       @R15,R2
-          main.c   123            for (x=0; x<3; x++){  
-    00000226 6A93                   MOV         R9,R10
-    00000228 58F2                   MOV.L       @(8,R15),R8
-    0000022A 63C3                   MOV         R12,R3
-    0000022C 4E00                   SHLL        R14
-    0000022E 3E3C                   ADD         R3,R14
-    00000230 4E08                   SHLL2       R14
-    00000232 3E2C                   ADD         R2,R14
-    00000234 38CC                   ADD         R12,R8
-    00000236              L375:                             
-          main.c   124                Bdisp_SetPoint_VRAM(x+xOffset, y+yOffset, shape[y][x]);
-    00000236 6583                   MOV         R8,R5
-    00000238 D328                   MOV.L       L381+12,R3 ; _Bdisp_SetPoint_VRAM
-    0000023A 66E6                   MOV.L       @R14+,R6
-    0000023C 430B                   JSR         @R3
-    0000023E 64D3                   MOV         R13,R4
-    00000240 7A01                   ADD         #1,R10
-    00000242 3AB3                   CMP/GE      R11,R10
-    00000244 8FF7                   BF/S        L375
-    00000246 7D01                   ADD         #1,R13
-    00000248 7C01                   ADD         #1,R12
-    0000024A 3CB3                   CMP/GE      R11,R12
-    0000024C 8BE8                   BF          L374
-          main.c   125            }
-          main.c   126        }
-          main.c   127    }
-    0000024E 7F0C                   ADD         #12,R15
-    00000250 4F26                   LDS.L       @R15+,PR
-    00000252 68F6                   MOV.L       @R15+,R8
-    00000254 69F6                   MOV.L       @R15+,R9
-    00000256 6AF6                   MOV.L       @R15+,R10
-    00000258 6BF6                   MOV.L       @R15+,R11
-    0000025A 6CF6                   MOV.L       @R15+,R12
-    0000025C 6DF6                   MOV.L       @R15+,R13
-    0000025E 000B                   RTS
-    00000260 6EF6                   MOV.L       @R15+,R14
-          main.c   128    
-          main.c   129    void initDisp(){
-    00000262              _initDisp:                       ; function: initDisp
-                                                           ; frame size=32
-    00000262 2FE6                   MOV.L       R14,@-R15
-    00000264 2FD6                   MOV.L       R13,@-R15
-          main.c   130        int i;
-
-
-
-
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    9
-
-
-SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
-
-          main.c   131        int x;
-          main.c   132        int y;
-          main.c   133    
-          main.c   134        for (i=21; i<60; i+=20){ //große Linien
-    00000266 EE15                   MOV         #21,R14
-    00000268 2FC6                   MOV.L       R12,@-R15
-    0000026A EC3C                   MOV         #60,R12
-    0000026C DD1A                   MOV.L       L381+8,R13 ; _Bdisp_DrawLineVRAM
-    0000026E 2FB6                   MOV.L       R11,@-R15
-    00000270 2FA6                   MOV.L       R10,@-R15
-    00000272 2F96                   MOV.L       R9,@-R15
-    00000274 2F86                   MOV.L       R8,@-R15
-    00000276 4F22                   STS.L       PR,@-R15
-    00000278              L376:                             
-          main.c   135            Bdisp_DrawLineVRAM(i, 2, i, 60);  //vertikal
-    00000278 E73C                   MOV         #60,R7
-    0000027A 66E3                   MOV         R14,R6
-    0000027C E502                   MOV         #2,R5
-    0000027E 4D0B                   JSR         @R13
-    00000280 64E3                   MOV         R14,R4
-          main.c   136            Bdisp_DrawLineVRAM(2, i, 60, i);  //horizontal
-    00000282 67E3                   MOV         R14,R7
-    00000284 E63C                   MOV         #60,R6
-    00000286 65E3                   MOV         R14,R5
-    00000288 4D0B                   JSR         @R13
-    0000028A E402                   MOV         #2,R4
-    0000028C 7E14                   ADD         #20,R14
-    0000028E 3EC3                   CMP/GE      R12,R14
-    00000290 8BF2                   BF          L376
-          main.c   137        }
-          main.c   138        
-          main.c   139        for (y=0; y<3; y++){
-    00000292 E802                   MOV         #2,R8
-    00000294 EA00                   MOV         #0,R10
-    00000296 ED03                   MOV         #3,R13
-    00000298 6BA3                   MOV         R10,R11
-    0000029A              L377:                             
-          main.c   140            for (x=0; x<3; x++){
-    0000029A 6CA3                   MOV         R10,R12
-    0000029C 6E83                   MOV         R8,R14
-    0000029E 69B3                   MOV         R11,R9
-    000002A0 63B3                   MOV         R11,R3
-    000002A2 4908                   SHLL2       R9
-    000002A4 393C                   ADD         R3,R9
-    000002A6 4908                   SHLL2       R9
-    000002A8 7902                   ADD         #2,R9
-    000002AA              L378:                             
-          main.c   141                miniTTT(x*20+2, y*20+2); //kleine Linien
-    000002AA 6593                   MOV         R9,R5
-    000002AC BF76                   BSR         _miniTTT
-    000002AE 64E3                   MOV         R14,R4
-    000002B0 7C01                   ADD         #1,R12
-    000002B2 3CD3                   CMP/GE      R13,R12
-    000002B4 8FF9                   BF/S        L378
-    000002B6 7E14                   ADD         #20,R14
-    000002B8 7B01                   ADD         #1,R11
-    000002BA 3BD3                   CMP/GE      R13,R11
-
-
-
-
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE   10
-
-
-SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
-
-    000002BC 8BED                   BF          L377
-          main.c   142            }
+          main.c   140        for (i=6; i<18; i+=6){
+    000001FA EB06                   MOV         #6,R11
+    000001FC 2F96                   MOV.L       R9,@-R15
+    000001FE 6A53                   MOV         R5,R10
+    00000200 2F86                   MOV.L       R8,@-R15
+    00000202 6943                   MOV         R4,R9
+    00000204 4F22                   STS.L       PR,@-R15
+    00000206 7D06                   ADD         #6,R13
+    00000208 7FF8                   ADD         #-8,R15
+    0000020A E812                   MOV         #18,R8
+    0000020C 1F31                   MOV.L       R3,@(4,R15)
+    0000020E 6293                   MOV         R9,R2
+    00000210 7211                   ADD         #17,R2
+    00000212 2F22                   MOV.L       R2,@R15
+    00000214              L395:                             
+          main.c   141        Bdisp_DrawLineVRAM(i+xOffset, 1+yOffset, i+xOffset, 17+yOffset);  //vertikal
+    00000214 57F1                   MOV.L       @(4,R15),R7
+    00000216 66E3                   MOV         R14,R6
+    00000218 65A3                   MOV         R10,R5
+    0000021A 7501                   ADD         #1,R5
+    0000021C 4C0B                   JSR         @R12
+    0000021E 64E3                   MOV         R14,R4
+          main.c   142        Bdisp_DrawLineVRAM(1+xOffset, i+yOffset, 17+xOffset, i+yOffset);  //horizontal
+    00000220 66F2                   MOV.L       @R15,R6
+    00000222 65D3                   MOV         R13,R5
+    00000224 67D3                   MOV         R13,R7
+    00000226 6493                   MOV         R9,R4
+    00000228 4C0B                   JSR         @R12
+    0000022A 7401                   ADD         #1,R4
+    0000022C 7B06                   ADD         #6,R11
+    0000022E 7D06                   ADD         #6,R13
+    00000230 3B83                   CMP/GE      R8,R11
+    00000232 8FEF                   BF/S        L395
+    00000234 7E06                   ADD         #6,R14
           main.c   143        }
           main.c   144    }
-    000002BE 4F26                   LDS.L       @R15+,PR
-    000002C0 68F6                   MOV.L       @R15+,R8
-    000002C2 69F6                   MOV.L       @R15+,R9
-    000002C4 6AF6                   MOV.L       @R15+,R10
-    000002C6 6BF6                   MOV.L       @R15+,R11
-    000002C8 6CF6                   MOV.L       @R15+,R12
-    000002CA 6DF6                   MOV.L       @R15+,R13
-    000002CC 000B                   RTS
-    000002CE 6EF6                   MOV.L       @R15+,R14
-    000002D0              L381:                             
-    000002D0 <00000000>             .DATA.L     __modls
-    000002D4 <00000000>             .DATA.L     __divls
-    000002D8 <00000000>             .DATA.L     _Bdisp_DrawLineVRAM
-    000002DC <00000000>             .DATA.L     _Bdisp_SetPoint_VRAM
+    00000236 7F08                   ADD         #8,R15
+    00000238 4F26                   LDS.L       @R15+,PR
+    0000023A 68F6                   MOV.L       @R15+,R8
+    0000023C 69F6                   MOV.L       @R15+,R9
+    0000023E 6AF6                   MOV.L       @R15+,R10
+    00000240 6BF6                   MOV.L       @R15+,R11
+    00000242 6CF6                   MOV.L       @R15+,R12
+    00000244 6DF6                   MOV.L       @R15+,R13
+    00000246 000B                   RTS
+    00000248 6EF6                   MOV.L       @R15+,R14
           main.c   145    
-          main.c   146    
-          main.c   147    
-          main.c   148    //****************************************************************************
-          main.c   149    //**************                                              ****************
-          main.c   150    //**************                 Notice!                      ****************
-          main.c   151    //**************                                              ****************
-          main.c   152    //**************  Please do not change the following source.  ****************
-          main.c   153    //**************                                              ****************
-          main.c   154    //****************************************************************************
-          main.c   155    
-          main.c   156    
-          main.c   157    #pragma section _BR_Size
-          main.c   158    unsigned long BR_Size;
-          main.c   159    #pragma section
-          main.c   160    
-          main.c   161    
-          main.c   162    #pragma section _TOP
-          main.c   163    
-          main.c   164    //****************************************************************************
-          main.c   165    //  InitializeSystem
-          main.c   166    //
-          main.c   167    //  param   :   isAppli   : 1 = Application / 0 = eActivity
-          main.c   168    //              OptionNum : Option Number (only eActivity)
-          main.c   169    //
-          main.c   170    //  retval  :   1 = No error / 0 = Error
-          main.c   171    //
-          main.c   172    //****************************************************************************
-          main.c   173    int InitializeSystem(int isAppli, unsigned short OptionNum)
-P_T 00000000              _InitializeSystem:               ; function: InitializeSystem
-                                                           ; frame size=0
-          main.c   174    {
-          main.c   175        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
-    00000000 D301                   MOV.L       L382+2,R3  ; _INIT_ADDIN_APPLICATION
-    00000002 432B                   JMP         @R3
-    00000004 0009                   NOP
-    00000006              L382:                             
-    00000006 0000                   .DATA.W     0
-    00000008 <00000000>             .DATA.L     _INIT_ADDIN_APPLICATION
+          main.c   146    void drawShape(int xOffset, int yOffset, int shape[3][3]){
+    0000024A              _drawShape:                      ; function: drawShape
+                                                           ; frame size=44
+    0000024A 2FE6                   MOV.L       R14,@-R15
+    0000024C 2FD6                   MOV.L       R13,@-R15
+    0000024E 2FC6                   MOV.L       R12,@-R15
+    00000250 2FB6                   MOV.L       R11,@-R15
+          main.c   147        int x;
+          main.c   148        int y;
+          main.c   149        
 
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE   11
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    9
 
 
 SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
 
-          main.c   176    }
-          main.c   177    
-          main.c   178    #pragma section
-          main.c   179    
-C   00000000              L309:
+          main.c   150        for (y=0; y<3; y++){
+    00000252 EB03                   MOV         #3,R11
+    00000254 2FA6                   MOV.L       R10,@-R15
+    00000256 2F96                   MOV.L       R9,@-R15
+    00000258 2F86                   MOV.L       R8,@-R15
+    0000025A E900                   MOV         #0,R9
+    0000025C 4F22                   STS.L       PR,@-R15
+    0000025E 6C93                   MOV         R9,R12
+    00000260 7FF4                   ADD         #-12,R15
+    00000262 1F41                   MOV.L       R4,@(4,R15)
+    00000264 1F52                   MOV.L       R5,@(8,R15)
+    00000266 2F62                   MOV.L       R6,@R15
+    00000268              L396:                             
+    00000268 5DF1                   MOV.L       @(4,R15),R13
+    0000026A 6EC3                   MOV         R12,R14
+    0000026C 62F2                   MOV.L       @R15,R2
+          main.c   151            for (x=0; x<3; x++){  
+    0000026E 6A93                   MOV         R9,R10
+    00000270 58F2                   MOV.L       @(8,R15),R8
+    00000272 63C3                   MOV         R12,R3
+    00000274 4E00                   SHLL        R14
+    00000276 3E3C                   ADD         R3,R14
+    00000278 4E08                   SHLL2       R14
+    0000027A 3E2C                   ADD         R2,R14
+    0000027C 38CC                   ADD         R12,R8
+    0000027E              L397:                             
+          main.c   152                Bdisp_SetPoint_VRAM(x+xOffset, y+yOffset, shape[y][x]);
+    0000027E 6583                   MOV         R8,R5
+    00000280 D38B                   MOV.L       L405+12,R3 ; _Bdisp_SetPoint_VRAM
+    00000282 66E6                   MOV.L       @R14+,R6
+    00000284 430B                   JSR         @R3
+    00000286 64D3                   MOV         R13,R4
+    00000288 7A01                   ADD         #1,R10
+    0000028A 3AB3                   CMP/GE      R11,R10
+    0000028C 8FF7                   BF/S        L397
+    0000028E 7D01                   ADD         #1,R13
+    00000290 7C01                   ADD         #1,R12
+    00000292 3CB3                   CMP/GE      R11,R12
+    00000294 8BE8                   BF          L396
+          main.c   153            }
+          main.c   154        }
+          main.c   155    }
+    00000296 7F0C                   ADD         #12,R15
+    00000298 4F26                   LDS.L       @R15+,PR
+    0000029A 68F6                   MOV.L       @R15+,R8
+    0000029C 69F6                   MOV.L       @R15+,R9
+    0000029E 6AF6                   MOV.L       @R15+,R10
+    000002A0 6BF6                   MOV.L       @R15+,R11
+    000002A2 6CF6                   MOV.L       @R15+,R12
+    000002A4 6DF6                   MOV.L       @R15+,R13
+    000002A6 000B                   RTS
+    000002A8 6EF6                   MOV.L       @R15+,R14
+          main.c   156    
+          main.c   157    void drawOutline(int XY[2]){
+    000002AA              _drawOutline:                    ; function: drawOutline
+                                                           ; frame size=24
+    000002AA 2FE6                   MOV.L       R14,@-R15
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   10
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000002AC 2FD6                   MOV.L       R13,@-R15
+    000002AE 6E43                   MOV         R4,R14
+    000002B0 2FC6                   MOV.L       R12,@-R15
+          main.c   158        Bdisp_DrawLineVRAM(2+XY[0]*20, 2+XY[1]*20, 2+XY[0]*20, 20+XY[1]*20);
+    000002B2 6D43                   MOV         R4,R13
+    000002B4 4F22                   STS.L       PR,@-R15
+    000002B6 7D04                   ADD         #4,R13
+    000002B8 DC7C                   MOV.L       L405+8,R12 ; _Bdisp_DrawLineVRAM
+    000002BA 7FF8                   ADD         #-8,R15
+    000002BC 67D2                   MOV.L       @R13,R7
+    000002BE 6373                   MOV         R7,R3
+    000002C0 4708                   SHLL2       R7
+    000002C2 373C                   ADD         R3,R7
+    000002C4 4708                   SHLL2       R7
+    000002C6 1F71                   MOV.L       R7,@(4,R15)
+    000002C8 66E2                   MOV.L       @R14,R6
+    000002CA 7714                   ADD         #20,R7
+    000002CC 6363                   MOV         R6,R3
+    000002CE 4608                   SHLL2       R6
+    000002D0 363C                   ADD         R3,R6
+    000002D2 4608                   SHLL2       R6
+    000002D4 7602                   ADD         #2,R6
+    000002D6 2F62                   MOV.L       R6,@R15
+    000002D8 55F1                   MOV.L       @(4,R15),R5
+    000002DA 7502                   ADD         #2,R5
+    000002DC 4C0B                   JSR         @R12
+    000002DE 6463                   MOV         R6,R4
+          main.c   159        Bdisp_DrawLineVRAM(2+XY[0]*20, 20+XY[1]*20, 20+XY[0]*20, 20+XY[1]*20);
+    000002E0 67D2                   MOV.L       @R13,R7
+    000002E2 6373                   MOV         R7,R3
+    000002E4 4708                   SHLL2       R7
+    000002E6 373C                   ADD         R3,R7
+    000002E8 4708                   SHLL2       R7
+    000002EA 7714                   ADD         #20,R7
+    000002EC 1F71                   MOV.L       R7,@(4,R15)
+    000002EE 66E2                   MOV.L       @R14,R6
+    000002F0 6363                   MOV         R6,R3
+    000002F2 4608                   SHLL2       R6
+    000002F4 363C                   ADD         R3,R6
+    000002F6 4608                   SHLL2       R6
+    000002F8 2F62                   MOV.L       R6,@R15
+    000002FA 7614                   ADD         #20,R6
+    000002FC 55F1                   MOV.L       @(4,R15),R5
+    000002FE 64F2                   MOV.L       @R15,R4
+    00000300 4C0B                   JSR         @R12
+    00000302 7402                   ADD         #2,R4
+          main.c   160        Bdisp_DrawLineVRAM(20+XY[0]*20, 20+XY[1]*20, 20+XY[0]*20, 2+XY[1]*20);
+    00000304 67D2                   MOV.L       @R13,R7
+    00000306 6373                   MOV         R7,R3
+    00000308 4708                   SHLL2       R7
+    0000030A 373C                   ADD         R3,R7
+    0000030C 4708                   SHLL2       R7
+    0000030E 1F71                   MOV.L       R7,@(4,R15)
+    00000310 66E2                   MOV.L       @R14,R6
+    00000312 7702                   ADD         #2,R7
+    00000314 6363                   MOV         R6,R3
+    00000316 4608                   SHLL2       R6
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   11
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    00000318 363C                   ADD         R3,R6
+    0000031A 4608                   SHLL2       R6
+    0000031C 7614                   ADD         #20,R6
+    0000031E 2F62                   MOV.L       R6,@R15
+    00000320 55F1                   MOV.L       @(4,R15),R5
+    00000322 7514                   ADD         #20,R5
+    00000324 4C0B                   JSR         @R12
+    00000326 6463                   MOV         R6,R4
+          main.c   161        Bdisp_DrawLineVRAM(20+XY[0]*20, 2+XY[1]*20, 2+XY[0]*20, 2+XY[1]*20);
+    00000328 67D2                   MOV.L       @R13,R7
+    0000032A 6373                   MOV         R7,R3
+    0000032C 4708                   SHLL2       R7
+    0000032E 373C                   ADD         R3,R7
+    00000330 4708                   SHLL2       R7
+    00000332 7702                   ADD         #2,R7
+    00000334 1F71                   MOV.L       R7,@(4,R15)
+    00000336 66E2                   MOV.L       @R14,R6
+    00000338 6363                   MOV         R6,R3
+    0000033A 4608                   SHLL2       R6
+    0000033C 363C                   ADD         R3,R6
+    0000033E 4608                   SHLL2       R6
+    00000340 2F62                   MOV.L       R6,@R15
+    00000342 7602                   ADD         #2,R6
+    00000344 55F1                   MOV.L       @(4,R15),R5
+    00000346 64F2                   MOV.L       @R15,R4
+    00000348 4C0B                   JSR         @R12
+    0000034A 7414                   ADD         #20,R4
+          main.c   162    }
+    0000034C 7F08                   ADD         #8,R15
+    0000034E 4F26                   LDS.L       @R15+,PR
+    00000350 6CF6                   MOV.L       @R15+,R12
+    00000352 6DF6                   MOV.L       @R15+,R13
+    00000354 000B                   RTS
+    00000356 6EF6                   MOV.L       @R15+,R14
+          main.c   163    
+          main.c   164    void eraseOutline(int XY[2]){
+    00000358              _eraseOutline:                   ; function: eraseOutline
+                                                           ; frame size=24
+    00000358 2FE6                   MOV.L       R14,@-R15
+    0000035A 6E43                   MOV         R4,R14
+    0000035C 2FD6                   MOV.L       R13,@-R15
+          main.c   165        Bdisp_ClearLineVRAM(2+XY[0]*20, 2+XY[1]*20, 2+XY[0]*20, 20+XY[1]*20);
+    0000035E 6D43                   MOV         R4,R13
+    00000360 2FC6                   MOV.L       R12,@-R15
+    00000362 7D04                   ADD         #4,R13
+    00000364 4F22                   STS.L       PR,@-R15
+    00000366 7FF8                   ADD         #-8,R15
+    00000368 DC52                   MOV.L       L405+16,R12; _Bdisp_ClearLineVRAM
+    0000036A 67D2                   MOV.L       @R13,R7
+    0000036C 6373                   MOV         R7,R3
+    0000036E 4708                   SHLL2       R7
+    00000370 373C                   ADD         R3,R7
+    00000372 4708                   SHLL2       R7
+    00000374 1F71                   MOV.L       R7,@(4,R15)
+    00000376 7714                   ADD         #20,R7
+    00000378 66E2                   MOV.L       @R14,R6
+    0000037A 6363                   MOV         R6,R3
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   12
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    0000037C 4608                   SHLL2       R6
+    0000037E 363C                   ADD         R3,R6
+    00000380 4608                   SHLL2       R6
+    00000382 7602                   ADD         #2,R6
+    00000384 2F62                   MOV.L       R6,@R15
+    00000386 55F1                   MOV.L       @(4,R15),R5
+    00000388 7502                   ADD         #2,R5
+    0000038A 4C0B                   JSR         @R12
+    0000038C 6463                   MOV         R6,R4
+          main.c   166        Bdisp_ClearLineVRAM(2+XY[0]*20, 20+XY[1]*20, 20+XY[0]*20, 20+XY[1]*20);
+    0000038E 67D2                   MOV.L       @R13,R7
+    00000390 6373                   MOV         R7,R3
+    00000392 4708                   SHLL2       R7
+    00000394 373C                   ADD         R3,R7
+    00000396 4708                   SHLL2       R7
+    00000398 7714                   ADD         #20,R7
+    0000039A 1F71                   MOV.L       R7,@(4,R15)
+    0000039C 66E2                   MOV.L       @R14,R6
+    0000039E 6363                   MOV         R6,R3
+    000003A0 4608                   SHLL2       R6
+    000003A2 363C                   ADD         R3,R6
+    000003A4 4608                   SHLL2       R6
+    000003A6 2F62                   MOV.L       R6,@R15
+    000003A8 55F1                   MOV.L       @(4,R15),R5
+    000003AA 7614                   ADD         #20,R6
+    000003AC 64F2                   MOV.L       @R15,R4
+    000003AE 4C0B                   JSR         @R12
+    000003B0 7402                   ADD         #2,R4
+          main.c   167        Bdisp_ClearLineVRAM(20+XY[0]*20, 20+XY[1]*20, 20+XY[0]*20, 2+XY[1]*20);
+    000003B2 67D2                   MOV.L       @R13,R7
+    000003B4 6373                   MOV         R7,R3
+    000003B6 4708                   SHLL2       R7
+    000003B8 373C                   ADD         R3,R7
+    000003BA 4708                   SHLL2       R7
+    000003BC 1F71                   MOV.L       R7,@(4,R15)
+    000003BE 7702                   ADD         #2,R7
+    000003C0 66E2                   MOV.L       @R14,R6
+    000003C2 6363                   MOV         R6,R3
+    000003C4 4608                   SHLL2       R6
+    000003C6 363C                   ADD         R3,R6
+    000003C8 4608                   SHLL2       R6
+    000003CA 7614                   ADD         #20,R6
+    000003CC 2F62                   MOV.L       R6,@R15
+    000003CE 55F1                   MOV.L       @(4,R15),R5
+    000003D0 7514                   ADD         #20,R5
+    000003D2 4C0B                   JSR         @R12
+    000003D4 6463                   MOV         R6,R4
+          main.c   168        Bdisp_ClearLineVRAM(20+XY[0]*20, 2+XY[1]*20, 2+XY[0]*20, 2+XY[1]*20);
+    000003D6 67D2                   MOV.L       @R13,R7
+    000003D8 6373                   MOV         R7,R3
+    000003DA 4708                   SHLL2       R7
+    000003DC 373C                   ADD         R3,R7
+    000003DE 4708                   SHLL2       R7
+    000003E0 7702                   ADD         #2,R7
+    000003E2 1F71                   MOV.L       R7,@(4,R15)
+    000003E4 66E2                   MOV.L       @R14,R6
+    000003E6 6363                   MOV         R6,R3
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   13
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000003E8 4608                   SHLL2       R6
+    000003EA 363C                   ADD         R3,R6
+    000003EC 4608                   SHLL2       R6
+    000003EE 2F62                   MOV.L       R6,@R15
+    000003F0 55F1                   MOV.L       @(4,R15),R5
+    000003F2 7602                   ADD         #2,R6
+    000003F4 64F2                   MOV.L       @R15,R4
+    000003F6 4C0B                   JSR         @R12
+    000003F8 7414                   ADD         #20,R4
+          main.c   169    }
+    000003FA 7F08                   ADD         #8,R15
+    000003FC 4F26                   LDS.L       @R15+,PR
+    000003FE 6CF6                   MOV.L       @R15+,R12
+    00000400 6DF6                   MOV.L       @R15+,R13
+    00000402 000B                   RTS
+    00000404 6EF6                   MOV.L       @R15+,R14
+          main.c   170    
+          main.c   171    void memorize(int memory[3][3][3][3], int XY1[2], int XY2[2], int player){
+    00000406              _memorize:                       ; function: memorize
+                                                           ; frame size=4
+          main.c   172        memory[XY1[1]][XY1[0]][XY2[1]][XY2[0]] = player;
+    00000406 E36C                   MOV         #108,R3
+    00000408 4F12                   STS.L       MACL,@-R15
+    0000040A 5251                   MOV.L       @(4,R5),R2
+    0000040C 0237                   MUL.L       R3,R2
+    0000040E 001A                   STS         MACL,R0
+    00000410 6252                   MOV.L       @R5,R2
+    00000412 304C                   ADD         R4,R0
+    00000414 6123                   MOV         R2,R1
+    00000416 4208                   SHLL2       R2
+    00000418 4200                   SHLL        R2
+    0000041A 321C                   ADD         R1,R2
+    0000041C 4208                   SHLL2       R2
+    0000041E 302C                   ADD         R2,R0
+    00000420 5261                   MOV.L       @(4,R6),R2
+    00000422 6123                   MOV         R2,R1
+    00000424 4200                   SHLL        R2
+    00000426 321C                   ADD         R1,R2
+    00000428 4208                   SHLL2       R2
+    0000042A 302C                   ADD         R2,R0
+    0000042C 6262                   MOV.L       @R6,R2
+    0000042E 4208                   SHLL2       R2
+    00000430 0276                   MOV.L       R7,@(R0,R2)
+          main.c   173    } 
+    00000432 000B                   RTS
+    00000434 4F16                   LDS.L       @R15+,MACL
+          main.c   174    
+          main.c   175    void nextMove(int memory[3][3][3][3], int nXY[2], int numpad[9], int numY[3], int XY[2]){
+    00000436              _nextMove:                       ; function: nextMove
+                                                           ; frame size=40
+    00000436 2FE6                   MOV.L       R14,@-R15
+    00000438 2FD6                   MOV.L       R13,@-R15
+    0000043A ED6C                   MOV         #108,R13
+    0000043C 2FC6                   MOV.L       R12,@-R15
+    0000043E 6C53                   MOV         R5,R12
+    00000440 2FB6                   MOV.L       R11,@-R15
+    00000442 2FA6                   MOV.L       R10,@-R15
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   14
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    00000444 4F22                   STS.L       PR,@-R15
+    00000446 6AC3                   MOV         R12,R10
+    00000448 4F12                   STS.L       MACL,@-R15
+    0000044A 7FF4                   ADD         #-12,R15
+    0000044C 1F42                   MOV.L       R4,@(8,R15)
+    0000044E 1F61                   MOV.L       R6,@(4,R15)
+    00000450 2F72                   MOV.L       R7,@R15
+    00000452 5EFA                   MOV.L       @(40,R15),R14
+    00000454 6BE3                   MOV         R14,R11
+    00000456 7B04                   ADD         #4,R11
+          main.c   176        while (memory[XY[1]][XY[0]][nXY[1]][nXY[0]] != 0){
+    00000458 A004                   BRA         L398
+    0000045A 7A04                   ADD         #4,R10
+    0000045C              L399:                             
+          main.c   177            nextXY(numpad, numY, XY);
+    0000045C 65F2                   MOV.L       @R15,R5
+    0000045E 66E3                   MOV         R14,R6
+    00000460 BEA0                   BSR         _nextXY
+    00000462 54F1                   MOV.L       @(4,R15),R4
+    00000464              L398:                             
+    00000464 60B2                   MOV.L       @R11,R0
+    00000466 00D7                   MUL.L       R13,R0
+    00000468 53F2                   MOV.L       @(8,R15),R3
+    0000046A 001A                   STS         MACL,R0
+    0000046C 62E2                   MOV.L       @R14,R2
+    0000046E 303C                   ADD         R3,R0
+    00000470 6123                   MOV         R2,R1
+    00000472 4208                   SHLL2       R2
+    00000474 4200                   SHLL        R2
+    00000476 321C                   ADD         R1,R2
+    00000478 4208                   SHLL2       R2
+    0000047A 302C                   ADD         R2,R0
+    0000047C 62A2                   MOV.L       @R10,R2
+    0000047E 6123                   MOV         R2,R1
+    00000480 4200                   SHLL        R2
+    00000482 321C                   ADD         R1,R2
+    00000484 4208                   SHLL2       R2
+    00000486 302C                   ADD         R2,R0
+    00000488 62C2                   MOV.L       @R12,R2
+    0000048A 4208                   SHLL2       R2
+    0000048C 012E                   MOV.L       @(R0,R2),R1
+    0000048E 2118                   TST         R1,R1
+    00000490 8BE4                   BF          L399
+          main.c   178        }
+          main.c   179    }
+    00000492 7F0C                   ADD         #12,R15
+    00000494 4F16                   LDS.L       @R15+,MACL
+    00000496 4F26                   LDS.L       @R15+,PR
+    00000498 6AF6                   MOV.L       @R15+,R10
+    0000049A 6BF6                   MOV.L       @R15+,R11
+    0000049C 6CF6                   MOV.L       @R15+,R12
+    0000049E 6DF6                   MOV.L       @R15+,R13
+    000004A0 000B                   RTS
+    000004A2 6EF6                   MOV.L       @R15+,R14
+    000004A4              L405:                             
+    000004A4 <00000000>             .DATA.L     __modls
+    000004A8 <00000000>             .DATA.L     __divls
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   15
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000004AC <00000000>             .DATA.L     _Bdisp_DrawLineVRAM
+    000004B0 <00000000>             .DATA.L     _Bdisp_SetPoint_VRAM
+    000004B4 <00000000>             .DATA.L     _Bdisp_ClearLineVRAM
+          main.c   180    
+          main.c   181    void initDisp(){
+    000004B8              _initDisp:                       ; function: initDisp
+                                                           ; frame size=32
+    000004B8 2FE6                   MOV.L       R14,@-R15
+          main.c   182        int i;
+          main.c   183        int x;
+          main.c   184        int y;
+          main.c   185    
+          main.c   186        for (i=21; i<60; i+=20){ //große Linien
+    000004BA EE15                   MOV         #21,R14
+    000004BC 2FD6                   MOV.L       R13,@-R15
+    000004BE 2FC6                   MOV.L       R12,@-R15
+    000004C0 2FB6                   MOV.L       R11,@-R15
+    000004C2 EC3C                   MOV         #60,R12
+    000004C4 DD18                   MOV.L       L406+2,R13 ; _Bdisp_DrawLineVRAM
+    000004C6 2FA6                   MOV.L       R10,@-R15
+    000004C8 2F96                   MOV.L       R9,@-R15
+    000004CA 2F86                   MOV.L       R8,@-R15
+    000004CC 4F22                   STS.L       PR,@-R15
+    000004CE              L400:                             
+          main.c   187            Bdisp_DrawLineVRAM(i, 2, i, 60);  //vertikal
+    000004CE E73C                   MOV         #60,R7
+    000004D0 66E3                   MOV         R14,R6
+    000004D2 E502                   MOV         #2,R5
+    000004D4 4D0B                   JSR         @R13
+    000004D6 64E3                   MOV         R14,R4
+          main.c   188            Bdisp_DrawLineVRAM(2, i, 60, i);  //horizontal
+    000004D8 67E3                   MOV         R14,R7
+    000004DA E63C                   MOV         #60,R6
+    000004DC 65E3                   MOV         R14,R5
+    000004DE 4D0B                   JSR         @R13
+    000004E0 E402                   MOV         #2,R4
+    000004E2 7E14                   ADD         #20,R14
+    000004E4 3EC3                   CMP/GE      R12,R14
+    000004E6 8BF2                   BF          L400
+          main.c   189        }
+          main.c   190        
+          main.c   191        for (y=0; y<3; y++){
+    000004E8 E802                   MOV         #2,R8
+    000004EA EA00                   MOV         #0,R10
+    000004EC ED03                   MOV         #3,R13
+    000004EE 6BA3                   MOV         R10,R11
+    000004F0              L401:                             
+          main.c   192            for (x=0; x<3; x++){
+    000004F0 6CA3                   MOV         R10,R12
+    000004F2 6E83                   MOV         R8,R14
+    000004F4 69B3                   MOV         R11,R9
+    000004F6 63B3                   MOV         R11,R3
+    000004F8 4908                   SHLL2       R9
+    000004FA 393C                   ADD         R3,R9
+    000004FC 4908                   SHLL2       R9
+    000004FE 7902                   ADD         #2,R9
+    00000500              L402:                             
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   16
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+          main.c   193                miniTTT(x*20+2, y*20+2); //kleine Linien
+    00000500 6593                   MOV         R9,R5
+    00000502 BE6F                   BSR         _miniTTT
+    00000504 64E3                   MOV         R14,R4
+    00000506 7C01                   ADD         #1,R12
+    00000508 3CD3                   CMP/GE      R13,R12
+    0000050A 8FF9                   BF/S        L402
+    0000050C 7E14                   ADD         #20,R14
+    0000050E 7B01                   ADD         #1,R11
+    00000510 3BD3                   CMP/GE      R13,R11
+    00000512 8BED                   BF          L401
+          main.c   194            }
+          main.c   195        }
+          main.c   196    }
+    00000514 4F26                   LDS.L       @R15+,PR
+    00000516 68F6                   MOV.L       @R15+,R8
+    00000518 69F6                   MOV.L       @R15+,R9
+    0000051A 6AF6                   MOV.L       @R15+,R10
+    0000051C 6BF6                   MOV.L       @R15+,R11
+    0000051E 6CF6                   MOV.L       @R15+,R12
+    00000520 6DF6                   MOV.L       @R15+,R13
+    00000522 000B                   RTS
+    00000524 6EF6                   MOV.L       @R15+,R14
+    00000526              L406:                             
+    00000526 0000                   .DATA.W     0
+    00000528 <00000000>             .DATA.L     _Bdisp_DrawLineVRAM
+          main.c   197    
+          main.c   198    
+          main.c   199    
+          main.c   200    //****************************************************************************
+          main.c   201    //**************                                              ****************
+          main.c   202    //**************                 Notice!                      ****************
+          main.c   203    //**************                                              ****************
+          main.c   204    //**************  Please do not change the following source.  ****************
+          main.c   205    //**************                                              ****************
+          main.c   206    //****************************************************************************
+          main.c   207    
+          main.c   208    
+          main.c   209    #pragma section _BR_Size
+          main.c   210    unsigned long BR_Size;
+          main.c   211    #pragma section
+          main.c   212    
+          main.c   213    
+          main.c   214    #pragma section _TOP
+          main.c   215    
+          main.c   216    //****************************************************************************
+          main.c   217    //  InitializeSystem
+          main.c   218    //
+          main.c   219    //  param   :   isAppli   : 1 = Application / 0 = eActivity
+          main.c   220    //              OptionNum : Option Number (only eActivity)
+          main.c   221    //
+          main.c   222    //  retval  :   1 = No error / 0 = Error
+          main.c   223    //
+          main.c   224    //****************************************************************************
+          main.c   225    int InitializeSystem(int isAppli, unsigned short OptionNum)
+P_T 00000000              _InitializeSystem:               ; function: InitializeSystem
+                                                           ; frame size=0
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   17
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+          main.c   226    {
+          main.c   227        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
+    00000000 D301                   MOV.L       L407+2,R3  ; _INIT_ADDIN_APPLICATION
+    00000002 432B                   JMP         @R3
+    00000004 0009                   NOP
+    00000006              L407:                             
+    00000006 0000                   .DATA.W     0
+    00000008 <00000000>             .DATA.L     _INIT_ADDIN_APPLICATION
+          main.c   228    }
+          main.c   229    
+          main.c   230    #pragma section
+          main.c   231    
+C   00000000              L313:
     00000000 0000000700             .DATA.L     H'00000007,H'00000008,H'00000009,H'00000004,H'00000005,H'00000006,H'00000001,
              0000080000 +                       H'00000002,H'00000003
              0009000000   
@@ -676,18 +1080,96 @@ C   00000000              L309:
              0000010000   
              0002000000   
              03           
-    00000024              L311:
-    00000024 0000000000             .DATA.L     H'00000000,H'00000001,H'00000002
+    00000024              L315:
+    00000024 0000000000             .DATA.L     H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,H'00000000,
+             0000000000 +                       H'00000000,H'00000000,H'00000000,H'00000000
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   18
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             0000000000   
+             00000000     
+    00000168              L317:
+    00000168 0000000000             .DATA.L     H'00000000,H'00000001,H'00000002
              0000010000   
              0002         
-    00000030              L313:
-    00000030 0000000000             .DATA.L     H'00000000,H'00000000
+    00000174              L319:
+    00000174 0000000000             .DATA.L     H'00000000,H'00000000
              000000       
-    00000038              L315:
-    00000038 0000000000             .DATA.L     H'00000000,H'00000000
+    0000017C              L321:
+    0000017C 0000000000             .DATA.L     H'00000000,H'00000000
              000000       
-    00000040              L317:
-    00000040 0000000100             .DATA.L     H'00000001,H'00000001,H'00000001,H'00000001,H'00000000,H'00000001,H'00000001,
+    00000184              L323:
+    00000184 0000000000             .DATA.L     H'00000000,H'00000000
+             000000       
+    0000018C              L325:
+    0000018C 0000000100             .DATA.L     H'00000001,H'00000001,H'00000001,H'00000001,H'00000000,H'00000001,H'00000001,
              0000010000 +                       H'00000001,H'00000001
              0001000000   
              0100000000   
@@ -695,11 +1177,20 @@ C   00000000              L309:
              0000010000   
              0001000000   
              01           
-    00000064              L319:
-    00000064 0000000100             .DATA.L     H'00000001,H'00000000,H'00000001,H'00000000,H'00000001,H'00000000,H'00000001,
+    000001B0              L327:
+    000001B0 0000000100             .DATA.L     H'00000001,H'00000000,H'00000001,H'00000000,H'00000001,H'00000000,H'00000001,
              0000000000 +                       H'00000000,H'00000001
              0001000000   
              0000000001   
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE   19
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
              0000000000   
              0000010000   
              0000000000   
@@ -724,7 +1215,44 @@ B_B 00000000              _BR_Size:                        ; static: BR_Size
 
 
 
-SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 05-Nov-2024 19:16:37  PAGE    1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 24-Nov-2024 21:45:47  PAGE    1
 
 
 ******** STATISTICS INFORMATION ********
@@ -733,23 +1261,23 @@ SH SERIES C/C++ Compiler (Ver. 6.0C)                                            
 ********** ERROR INFORMATION ***********
 
 NUMBER OF ERRORS:           0
-NUMBER OF WARNINGS:         3
+NUMBER OF WARNINGS:         0
 
 
 
 
 ******* SOURCE LINE INFORMATION ********
 
-COMPILED SOURCE LINE:      179
+COMPILED SOURCE LINE:      231
 
 
 
 ******* SECTION SIZE INFORMATION *******
 
-PROGRAM  SECTION (P):                               000002E0 Byte(s)
+PROGRAM  SECTION (P):                               0000052C Byte(s)
 PROGRAM  SECTION (P_BR_Size):                       00000000 Byte(s)
 PROGRAM  SECTION (P_TOP):                           0000000C Byte(s)
-CONSTANT SECTION (C):                               00000088 Byte(s)
+CONSTANT SECTION (C):                               000001D4 Byte(s)
 CONSTANT SECTION (C_BR_Size):                       00000000 Byte(s)
 CONSTANT SECTION (C_TOP):                           00000000 Byte(s)
 DATA     SECTION (D):                               00000000 Byte(s)
@@ -759,15 +1287,15 @@ BSS      SECTION (B):                               00000000 Byte(s)
 BSS      SECTION (B_BR_Size):                       00000004 Byte(s)
 BSS      SECTION (B_TOP):                           00000000 Byte(s)
 
- TOTAL PROGRAM SIZE: 00000378 Byte(s)
+ TOTAL PROGRAM SIZE: 00000710 Byte(s)
 
 
 
 ********** LABEL INFORMATION ***********
 
-NUMBER OF EXTERNAL REFERENCE SYMBOLS:           10
-NUMBER OF EXTERNAL DEFINITION SYMBOLS:           8
-NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            40
+NUMBER OF EXTERNAL REFERENCE SYMBOLS:           12
+NUMBER OF EXTERNAL DEFINITION SYMBOLS:          12
+NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            49
 
 
 
@@ -793,5 +1321,5 @@ NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            40
 *** COMMAND PARAMETER ***
 
 
-  -subcommand=C:\Users\henry\AppData\Local\Temp\hmk7AD5.tmp 
+  -subcommand=C:\Users\Nutzer\AppData\Local\Temp\hmk32BB.tmp 
 
