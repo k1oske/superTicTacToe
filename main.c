@@ -131,7 +131,7 @@ void initDisp(){
     int x;
     int y;
 
-    for (i=21; i<60; i+=20){ //große Linien
+    for (i=21; i<60; i+=20){ //gro?e Linien
         Bdisp_DrawLineVRAM(i, 2, i, 60);  //vertikal
         Bdisp_DrawLineVRAM(2, i, 60, i);  //horizontal
     }
